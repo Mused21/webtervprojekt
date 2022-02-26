@@ -18,7 +18,7 @@ body {
     font-family: 'Roboto',sans-serif;
     font-size: 1em;
     line-height: 1.5em;
-    margin: 60px auto;
+    margin: 0px auto;
     width: 1000px;
 }
 
@@ -56,10 +56,12 @@ p {
   text-align: left;
 }
 
-table {
+table.navigation {
     width: 1000px;
-    margin: 12px auto 24px auto;
+    margin: 0px auto 24px auto;
     float: center;
+    background-color: #fafafa;
+
 }
 td {
     text-align: left;

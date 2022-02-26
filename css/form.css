@@ -1,0 +1,28 @@
+
+input, select, fieldset {
+  margin-bottom: 12px; }
+
+fieldset {
+  border: 3px solid #813c54;
+  text-align: center;
+
+}
+
+fieldset legend {
+  padding: 10px;
+}
+
+input[type="submit"] {
+
+  background-color: #4CAF50;
+  color: #FFF;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  width: 250px;
+  height: 45px;
+  cursor: pointer;
+}
+
+input:focus {
+  background-color: #E6FBFF; }

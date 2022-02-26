@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <link rel="stylesheet" type="text/css" media="all" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/form.css"/>
+    <title>Konferencia</title>
+
+</head>
+
+<body>
+    <div class="banner">
+        <img src="media/banner.jpg" alt="konferencia banner">
+        <div class="top">
+            <span class="title1">Physi-</span><span class="title2">Conf</span> <span class="year">2022</span>
+        </div>
+        <div class="bottom-right">
+            April 1, 2022 <br> University of Szeged
+        </div>
+    </div>
+
+    <table class="navigation">
+        <tr>
+          <td class="navigation">
+              <a title="Conference Home Page" href="index.html">Home</a>
+          </td>
+          <td class="navigation">
+              <a class="current" title="Register for the Conference" href="registration.html">Registration</a>
+          </td>
+          <td class="navigation">
+              <a title="Conference Speakers" href="speakers.html">Speakers</a>
+          </td>
+          <td class="navigation">
+              <a title="Conference Program" href="program.html">Program</a>
+          </td>
+          <td class="navigation">
+              <a title="Venue of the Conference" href="venue.html">Venue</a>
+          </td>
+          <td class="navigation">
+              <a title="Conference Flyer" href="flyer.html">Contact</a>
+          </td>
+          <td class="navigation">
+              <a title="Signing In" href="login.html">Sign In</a>
+          </td>
+        </tr>
+    </table>
+
+
+<h2>Registration</h2>
+  <p>Registration is a <em>necessity</em> if you would like to participate in the conference. Please fill out the form below.
+  After successful registration, you will be able to sign in with your email address and submit your abstract.</p>
+<div>
+  <form action="" method="POST" enctype="application/x-www-form-urlencoded" autocomplete="on">
+    <fieldset>
+      <legend>Registration form</legend>
+
+    <label>Name: <input type="text" name="name" value="" placeholder="Name" maxlength="50" autofocus tabindex="1" /></label> <br/>
+    <label>E-mail: <input type="email" name="email" value="" placeholder="E-mail" tabindex="2" /></label> <br/>
+
+    <label for="pwid">Password: </label>
+    <input type="password" name="pw" id="pwid" value="" required  tabindex="3"/> <br/>
+
+    <label for="Title">Title: </label>
+    <select name="Title" tabindex="4">
+      <option selected disabled>Choose</option>
+      <option value="Mr.">Mr.</option>
+      <option value="Ms.">Ms.</option>
+      <option value="Dr.">Dr.</option>
+      <option value="Prof.">Prof</option>
+    </select> <br/>
+
+    <label for="radio1id1">Speaker: </label>
+    <input type="radio" id="radio1id1" name="radio1" value="1" tabindex="5"/>
+    <label for="radio1id2">Participant: </label>
+    <input type="radio" id="radio1id2" name="radio1" value="2" checked/>
+
+    <br/>
+    <label for="checkbox1">Subscribe for newsletters: </label>
+    <input type="checkbox" id="checkbox1" name="treasure" value="vodka"  tabindex="6"/> <br/>
+
+    <input type="submit" value="Register"  tabindex="7" />
+
+    </fieldset>
+  </form>
+</div>
+
+    <footer>
+        &copy; Conference Organizers
+    </footer>
+
+</body>
+</html>
