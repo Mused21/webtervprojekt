@@ -13,7 +13,6 @@ fieldset legend {
 }
 
 input[type="submit"] {
-
   background-color: #4CAF50;
   color: #FFF;
   border: none;
@@ -21,6 +20,17 @@ input[type="submit"] {
   font-size: 1em;
   width: 250px;
   height: 45px;
+  cursor: pointer;
+}
+
+input[type="reset"] {
+  background-color: #555555;
+  color: #FFF;
+  border: none;
+  outline: none;
+  font-size: 0.8em;
+  width: 250px;
+  height: 25px;
   cursor: pointer;
 }
 
