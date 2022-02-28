@@ -1,58 +1,40 @@
 <!DOCTYPE html>
 <html lang='en'>
 
-<head>
-  <link rel="stylesheet" type="text/css" media="all" href="css/main.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="css/form.css" />
-  <title>Conference</title>
-  <link rel="icon" href="media/icon.png" />
-  <meta name="author" content="Imre Norbert, Bengery Zsolt" />
-  <meta name="description" content="Ig Nobel Conference 2022 Official Website" />
-  <meta name="keywords" content="SZTE, Webtervezés" />
-  <meta charset="UTF-8" />
-</head>
-
-<body>
-  <div class="banner">
-    <img src="media/banner.jpg" alt="conference banner">
-    <div class="top">
-      <span class="title1">Ig </span><span class="title2">Nobel</span> <span class="year">2022</span>
+  <head>
+    <link rel="stylesheet" type="text/css" media="all" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="css/form.css" />
+    <title>Conference</title>
+    <link rel="icon" href="media/icon.png" />
+    <meta name="author" content="Imre Norbert, Bengery Zsolt" />
+    <meta name="description" content="Ig Nobel Conference 2022 Official Website" />
+    <meta name="keywords" content="SZTE, Webtervezés" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <nav>
+      <div class="container">
+        <div class="nav">
+            <a title="Conference Home Page" href="index.html">Home</a>
+            <a class="current" title="Register for the Conference" href="registration.html">Registration</a>
+            <a title="Pictures" href="pictures.html">Pictures</a>
+            <a title="Conference Program" href="program.html">Program</a>
+            <a title="Venue of the Conference" href="venue.html">Venue</a>
+            <a title="Conference Flyer" href="flyer.html">Contact</a>
+        </div>
+      </div>
+    </nav>
+    <div class="banner">
+      <img class="banner-img" src="media/banner2.png" alt="Banner - Univ. of Szeged">
     </div>
-    <div class="bottom-right">
-      April 1, 2022 <br> University of Szeged
-    </div>
-  </div>
 
-  <nav>
-    <table class="navigation">
-      <tr>
-        <td class="navigation">
-          <a title="Conference Home Page" href="index.html">Home</a>
-        </td>
-        <td class="navigation">
-          <a class="current" title="Register for the Conference" href="registration.html">Registration</a>
-        </td>
-        <td class="navigation">
-          <a title="Pictures" href="pictures.html">Pictures</a>
-        </td>
-        <td class="navigation">
-          <a title="Conference Program" href="program.html">Program</a>
-        </td>
-        <td class="navigation">
-          <a title="Venue of the Conference" href="venue.html">Venue</a>
-        </td>
-        <td class="navigation">
-          <a title="Conference Flyer" href="flyer.html">Contact</a>
-        </td>
-      </tr>
-    </table>
-  </nav>
-
-  <h2>Registration</h2>
-  <p>Registration is a <em>necessity</em> if you would like to participate in the conference.<br />
-    Please fill out the form below.<br />
-    If you would like to become a speaker, please attach your abstract.
-  </p>
+  <div class="content">
+    <h2>Registration</h2>
+    <p>Registration is a <em>necessity</em> if you would like to participate in the conference.<br />
+      Please fill out the form below.<br />
+      If you would like to become a speaker, please attach your abstract.
+    </p>
 
   <div>
     <form action="" method="POST" enctype="application/x-www-form-urlencoded" autocomplete="on">
@@ -95,10 +77,11 @@
       </fieldset>
     </form>
   </div>
-
+  </div>
   <footer>
-    &copy; Conference Organizers
+    &copy; Conference Organizers: Bengery Zsolt, Imre Norbert
   </footer>
+</div>
 
 </body>
 
