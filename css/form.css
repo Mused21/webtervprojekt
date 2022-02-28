@@ -1,11 +1,15 @@
-
 input, select, fieldset {
-  margin-bottom: 12px; }
-
+  margin-bottom: 12px;
+}
 fieldset {
-  border: 3px solid #813c54;
+  display: block;
+  margin: auto;
   text-align: center;
-
+  padding-top: 0.35em;
+  padding-bottom: 0.625em;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  border: 2px groove;
 }
 
 fieldset legend {
@@ -35,4 +39,9 @@ input[type="reset"] {
 }
 
 input:focus {
-  background-color: #E6FBFF; }
+  background-color: #E6FBFF;
+}
+
+#speaker {
+  display: none;
+}
