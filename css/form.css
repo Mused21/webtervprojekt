@@ -25,6 +25,10 @@ fieldset legend {
   padding-top: 10px;
 }
 
+table {
+  margin: auto;
+}
+
 input[type="submit"] {
   background-color: #4CAF50;
   color: #FFF;
@@ -34,6 +38,7 @@ input[type="submit"] {
   width: 250px;
   height: 45px;
   cursor: pointer;
+  margin-top: 20px;
 }
 
 input[type="reset"] {

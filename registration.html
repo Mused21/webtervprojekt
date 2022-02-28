@@ -42,18 +42,34 @@
         <fieldset>
           <legend>Registration form</legend>
 
-          <label for="Title">Name: </label>
-          <select name="Title" tabindex="4">
-            <option selected disabled>Title</option>
-            <option value="Mr.">Mr.</option>
-            <option value="Ms.">Ms.</option>
-            <option value="Dr.">Dr.</option>
-            <option value="Prof.">Prof</option>
-          </select>
-          <label></label><input type="text" name="name" value="" placeholder="John Doe" maxlength="50" autofocus tabindex="1" /></label> <br />
-          <label>E-mail: <input type="email" name="email" value="" placeholder="john.doe@ignobel.com" tabindex="2" /></label> <br />
-          <label for="pwid">Password: </label>
-          <input type="password" name="pw" id="pwid" value="" required tabindex="3" /> <br />
+          <table>
+            <tr>
+              <td>
+                <select name="Title" tabindex="4">
+                  <option selected disabled>Title</option>
+                  <option value="Mr.">Mr.</option>
+                  <option value="Ms.">Ms.</option>
+                  <option value="Dr.">Dr.</option>
+                  <option value="Prof.">Prof</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="text" name="name" value="" placeholder="John Doe" maxlength="50" autofocus tabindex="1" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="email" name="email" value="" placeholder="john.doe@ignobel.com" tabindex="2" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="password" name="pw" id="pwid" value="" placeholder="Password" required tabindex="3" />
+              </td>
+            </tr>
+          </table>
 
           <label for="choice_participant">Participant: </label>
           <input type="radio" id="choice_participant" name="choice" value="participant" checked />
@@ -73,7 +89,7 @@
 
           <input type="submit" value="Register" tabindex="7" />
           <br />
-          <input type="reset" value="Reset" tabindex="8" />
+          <input type="reset" value="Reset" tabindex="8" id=resetbutton />
 
         </fieldset>
       </form>
@@ -89,9 +105,11 @@
 <script>
   const isSpeaker = document.querySelector('#choice_speaker');
   const isParticipant = document.querySelector('#choice_participant');
+  const resetButton = document.querySelector('#resetbutton');
 
   isSpeaker.addEventListener('change', speakerCheck);
   isParticipant.addEventListener('change', speakerCheck);
+  resetButton.addEventListener('click', hide);
 
   function speakerCheck() {
     if (document.getElementById("choice_speaker").checked) {
@@ -99,6 +117,10 @@
     } else {
       document.getElementById("speaker").style.display = "none";
     }
+  }
+
+  function hide() {
+    document.getElementById("speaker").style.display = "none";
   }
 </script>
 
