@@ -1,4 +1,3 @@
-
 table.programTable tr:nth-child(even) {
   background: #E6FBFF;
 }
@@ -6,14 +5,12 @@ table.programTable tr:nth-child(even) {
 table.programTable {
   border-collapse: collapse;
   width: 100%;
-  padding:  5px 5px;
-  background-color: #EEEEEE; /*halvány szürke*/
-
-
+  padding: 5px 5px;
+  background-color: #EEEEEE;
 }
 
 table.programTable td, table.programTable {
-  border: 2px solid #b2132e; /*upsdell red*/
+  border: 2px solid #b2132e;
   padding: 5px 5px;
   vertical-align: middle;
 }
@@ -28,10 +25,9 @@ table.programTable thead {
   font-size: 1.1em;
   color: #E6FBFF;
   text-align: center;
-
 }
 
 table.programTable tbody tr td:first-child {
-    text-align: center;
-    vertical-align: middle;
+  text-align: center;
+  vertical-align: middle;
 }
