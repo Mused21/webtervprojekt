@@ -65,7 +65,7 @@ p {
 
 .nav a {
   padding: auto;
-  margin-top: 15px;
+  margin-top: 5px;
   color: #b8860b;
   text-decoration: none;
   line-height: 1em;
@@ -95,7 +95,7 @@ a:active {
   overflow: auto;
   background-color: #fafafa;
   text-align: center;
-  padding-top: 50px;
+  padding-top: 30px;
 }
 
 .content {
@@ -116,7 +116,6 @@ a:active {
 }
 
 .banner-img {
-  border-radius: 5%;
   width: 100%;
   height: auto;
 }
