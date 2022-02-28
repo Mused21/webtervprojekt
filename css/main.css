@@ -69,12 +69,16 @@ p {
 
 table.navigation {
   width: 1000px;
-  margin: 0 auto 24px auto;
+  margin: 6px auto 24px auto;
   background-color: #fafafa;
 }
 
-td {
-  text-align: left;
+td.navigation {
+  font-size: 1.67em;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0;
+  width: 16.67%;
 }
 
 .banner {
@@ -123,17 +127,6 @@ td {
   color: #505050;
   font-size: 0.67em;
   font-weight: lighter;
-}
-
-table.navigation {
-  width: 1000px;
-}
-
-td.navigation {
-  font-size: 1.67em;
-  text-align: center;
-  vertical-align: middle;
-  padding: 0;
 }
 
 footer {
