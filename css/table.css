@@ -3,14 +3,15 @@ table.programTable tr:nth-child(even) {
 }
 
 table.programTable {
+  margin-top: 15px;
   border-collapse: collapse;
   width: 100%;
   padding: 5px 5px;
-  background-color: #EEEEEE;
+  background-color: #F6EDBC;
 }
 
 table.programTable td, table.programTable {
-  border: 2px solid #b2132e;
+  border: 2px solid #815c54;
   padding: 5px 5px;
   vertical-align: middle;
 }
@@ -21,13 +22,17 @@ table.programTable th {
 }
 
 table.programTable thead {
-  background: linear-gradient(to top, #ff5050 0%, #800000 100%);
+  background: linear-gradient(to top, #a17c74 0%, #815c54 100%);
   font-size: 1.1em;
-  color: #E6FBFF;
+  color: #F6EDBC;
   text-align: center;
 }
 
 table.programTable tbody tr td:first-child {
   text-align: center;
   vertical-align: middle;
+}
+
+.centered {
+  text-align: center;
 }

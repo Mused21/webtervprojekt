@@ -1,0 +1,46 @@
+.rounded {
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+}
+
+.grayscale {
+  filter: grayscale(100%);
+  filter: gray;
+  -webkit-filter: grayscale(100%);
+  -webkit-transition: all .6s ease;
+  -webkit-backface-visibility: hidden;
+}
+
+.grayscale:hover {
+  filter: none;
+  -webkit-filter: grayscale(0%);
+}
+
+.paw {
+  position: absolute;
+  width: 100px;
+  right: 600px;
+  z-index: 0;
+}
+
+.paw:hover {
+  z-index: 2;
+}
+
+.norbert {
+  position: relative;
+  z-index: 1;
+}
+
+.zsolt {
+  transition: 1s ease-in-out;
+}
+
+.zsolt:hover {
+  transform: rotate(360deg);
+}
+
+.inline {
+  display: inline-block;
+}
