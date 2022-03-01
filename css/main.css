@@ -47,6 +47,7 @@ p {
 }
 
 .nav {
+  z-index: 1000;
   width: 80%;
   max-width: 1000px;
   margin: auto;
@@ -93,6 +94,23 @@ a:hover {
   background-color: #;
   text-align: center;
   padding-top: 45px;
+}
+
+.banner {
+  position: relative;
+}
+
+.date {
+  font-size: 2.33em;
+  color: #fafafa;
+  line-height: 1.5em;
+  width: auto;
+  padding: 0px 20px 10px 0px;
+  text-align: right;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  text-shadow: 10px 10px 16px #000000;
 }
 
 .content {
