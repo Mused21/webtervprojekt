@@ -17,6 +17,10 @@
   -webkit-filter: grayscale(0%);
 }
 
+.inline {
+  display: inline-block;
+}
+
 #paw {
   position: absolute;
   width: 100px;
@@ -44,8 +48,4 @@
 
 #zsolt:hover {
   transform: rotate(360deg);
-}
-
-.inline {
-  display: inline-block;
 }

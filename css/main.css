@@ -81,30 +81,13 @@ a:hover {
   color: #b2132e;
 }
 
-.content, .banner {
+.content {
   width: 80%;
   max-width: 1000px;
   margin: 0 auto;
   overflow: auto;
   background-color: #;
   text-align: center;
-}
-
-.banner {
-  position: relative;
-}
-
-.date {
-  font-size: 2.33em;
-  color: #fafafa;
-  line-height: 1.5em;
-  width: auto;
-  padding: 0px 20px 10px 0px;
-  text-align: right;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  text-shadow: 10px 10px 16px #000000;
 }
 
 .content {
@@ -124,12 +107,35 @@ a:hover {
   top: 0;
 }
 
-.banner-img {
+#banner-img {
   width: 100%;
   height: auto;
 }
 
-.video {
+#banner {
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: auto;
+  background-color: #;
+  text-align: center;
+  position: relative;
+}
+
+#date {
+  font-size: 2.33em;
+  color: #fafafa;
+  line-height: 1.5em;
+  width: auto;
+  padding: 0px 20px 10px 0px;
+  text-align: right;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  text-shadow: 10px 10px 16px #000000;
+}
+
+#video {
   margin-top: 50px;
 }
 
@@ -142,20 +148,16 @@ a:hover {
     font-size: 1.5em;
   }
 
-  .date {
+  #date {
     font-size: 2em;
   }
 
-  .banner-img {
+  #banner-img {
     padding-top: 30px;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .date {
-    font-size: 1em;
-  }
-
   nav a {
     width: 50%;
     font-size: 1em;
@@ -169,7 +171,11 @@ a:hover {
     font-size: 1.5em;
   }
 
-  .banner-img {
+  #banner-img {
     padding-top: 35px;
+  }
+
+  #date {
+    font-size: 1em;
   }
 }

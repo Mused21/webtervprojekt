@@ -1,4 +1,4 @@
-.flexContainer {
+#flexContainer {
   background-color: #F6EDCF;
   height: auto;
   width: 100%;
@@ -11,7 +11,7 @@
   overflow: auto;
 }
 
-.flexContainer img {
+#flexContainer img {
   max-width: 30%;
   flex-flow: row nowrap;
   margin: 10px;
