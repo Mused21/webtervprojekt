@@ -14,24 +14,20 @@
 </head>
 
 <body>
-  <nav>
-    <div class="container">
-      <div class="nav">
-        <a title="Conference Home Page" href="index.html">Home</a>
-        <a title="Register for the Conference" href="registration.html">Registration</a>
-        <a title="Pictures" href="pictures.html">Pictures</a>
-        <a title="Conference Program" href="program.html">Program</a>
-        <a title="Venue of the Conference" href="venue.html">Venue</a>
-        <a class="current" title="Conference Contact" href="contact.html">Contact</a>
-      </div>
-    </div>
-  </nav>
   <div class="banner">
     <img class="banner-img" src="media/banner.png" alt="Banner - Univ. of Szeged">
     <div class="date">
       April 1, 2022
     </div>
   </div>
+  <nav>
+    <a title="Conference Home Page" href="index.html">Home</a>
+    <a title="Register for the Conference" href="registration.html">Registration</a>
+    <a title="Pictures" href="pictures.html">Pictures</a>
+    <a title="Conference Program" href="program.html">Program</a>
+    <a title="Venue of the Conference" href="venue.html">Venue</a>
+    <a class="current" title="Conference Contact" href="contact.html">Contact</a>
+  </nav>
 
   <div class="content">
     <h1>Got a question?</h1>
@@ -45,12 +41,14 @@
     </p>
     <div class="organizers">
       <figure class="inline">
-        <img class="rounded grayscale zsolt" src="media/zsolt.png" alt="Bengery Zsolt" />
+        <img class="rounded grayscale" id="zsolt" src="media/zsolt.png" alt="Bengery Zsolt" />
         <figcaption>Zsolt</figcaption>
       </figure>
       <figure class="inline">
-        <img class="rounded grayscale norbert" src="media/norbert.jpg" alt="Imre Norbert" />
-        <img class="paw" src="media/paw.png" alt="Pusheen Paw" />
+        <div id="pawholder">
+          <img class="rounded grayscale" id="norbert" src="media/norbert.jpg" alt="Imre Norbert" />
+          <img id="paw" src="media/paw.png" alt="Pusheen Paw" />
+        </div>
         <figcaption>Norbert</figcaption>
       </figure>
     </div>

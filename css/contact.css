@@ -17,27 +17,32 @@
   -webkit-filter: grayscale(0%);
 }
 
-.paw {
+#paw {
   position: absolute;
   width: 100px;
-  right: 600px;
+  right: 0px;
   z-index: 0;
 }
 
-.paw:hover {
+#paw:hover {
   z-index: 2;
 }
 
-.norbert {
+#pawholder {
+  position: relative;
+  z-index: 2;
+}
+
+#norbert {
   position: relative;
   z-index: 1;
 }
 
-.zsolt {
+#zsolt {
   transition: 1s ease-in-out;
 }
 
-.zsolt:hover {
+#zsolt:hover {
   transform: rotate(360deg);
 }
 

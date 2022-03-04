@@ -40,26 +40,21 @@ p {
   text-align: justify;
 }
 
-.container {
-  width: 80%;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.nav {
+nav {
   z-index: 1000;
-  width: 80%;
+  width: 100%;
   max-width: 1000px;
   margin: auto;
+  position: sticky;
+  top: 0;
   text-align: center;
-  position: fixed;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   background-color: #F6EDCF;
 }
 
-.nav a {
+nav a {
   padding: auto;
   margin-top: 10px;
   margin-bottom: 5px;
@@ -93,7 +88,6 @@ a:hover {
   overflow: auto;
   background-color: #;
   text-align: center;
-  padding-top: 45px;
 }
 
 .banner {
@@ -140,17 +134,29 @@ a:hover {
 }
 
 @media screen and (max-width: 900px) {
-  .nav a {
+  nav a {
     width: 30%;
   }
 
   h2 {
+    font-size: 1.5em;
+  }
+
+  .date {
     font-size: 2em;
+  }
+
+  .banner-img {
+    padding-top: 30px;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .nav a {
+  .date {
+    font-size: 1em;
+  }
+
+  nav a {
     width: 50%;
     font-size: 1em;
   }
@@ -162,15 +168,7 @@ a:hover {
   h2 {
     font-size: 1.5em;
   }
-}
 
-@media screen and (max-width: 900px) {
-  .banner-img {
-    padding-top: 30px;
-  }
-}
-
-@media screen and (max-width: 600px) {
   .banner-img {
     padding-top: 35px;
   }
