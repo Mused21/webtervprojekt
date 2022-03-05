@@ -1,8 +1,8 @@
 table#programTable {
+  font-size: 1em;
   margin-top: 15px;
   border-collapse: collapse;
   width: 100%;
-  padding: 5px 5px;
   background-color: #F6EDBC;
   border: 2px solid #815c54;
   padding: 5px 5px;
@@ -38,4 +38,30 @@ table#programTable tr:nth-child(even) {
 
 .centered {
   text-align: center;
+}
+
+@media screen and (max-width: 900px) {
+  table#programTable td {
+    padding: 2px 2px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  table#programTable > *{
+    font-size: 0.75em;
+  }
+
+  table#programTable td {
+    padding: 2px 2px;
+    line-height: 0.9;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  table#programTable td {
+    padding: 0px 0px;
+    letter-spacing: -1px;
+    line-height: 0.9;
+  }
+  }
 }

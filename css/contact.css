@@ -1,8 +1,30 @@
 .rounded {
   border-radius: 50%;
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
 }
+@media screen and (max-width: 900px) {
+  .rounded {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .rounded {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .rounded {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+  }
+}
+
 
 .grayscale {
   filter: grayscale(100%);

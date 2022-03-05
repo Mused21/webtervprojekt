@@ -11,9 +11,21 @@
   overflow: auto;
 }
 
-#flexContainer img {
+#flexContainer a {
   max-width: 30%;
   flex-flow: row nowrap;
   margin: 10px;
   text-align: center;
+  transition: 1s;
+}
+
+#flexContainer img {
+  width: 100%;
+}
+
+#flexContainer a:hover {
+    z-index: 10001211111;
+    cursor: pointer;
+    margin: 25px;
+    transform: scale(1.2);
 }

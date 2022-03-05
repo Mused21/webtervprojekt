@@ -55,3 +55,8 @@ input:focus {
 #speaker {
   display: none;
 }
+@media screen and (max-width: 400px) {
+  input[type="reset"], input[type="submit"] {
+      width: 150px;
+  }
+}

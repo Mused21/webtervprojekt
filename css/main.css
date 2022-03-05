@@ -32,6 +32,10 @@ h1, h2 {
 h1 {
   font-size: 2.00em;
 }
+h2 {
+  font-size: 1.50em;
+}
+
 
 p {
   list-style: none;
@@ -52,6 +56,7 @@ nav {
   flex-wrap: wrap;
   justify-content: space-around;
   background-color: #F6EDCF;
+/*  background: linear-gradient(to top, rgba(246,237,207,0.90), rgba(246,237,207,1), rgba(246,237,207,1), rgba(246,237,207,1), rgba(246,237,207,1));*/
 }
 
 nav a {
@@ -144,38 +149,34 @@ a:hover {
     width: 30%;
   }
 
-  h2 {
-    font-size: 1.5em;
-  }
-
   #date {
     font-size: 2em;
   }
 
-  #banner-img {
-    padding-top: 30px;
-  }
+
 }
 
 @media screen and (max-width: 600px) {
   nav a {
     width: 50%;
-    font-size: 1em;
+    font-size: 1.25em;
   }
 
   footer {
     margin-top: 3em;
   }
 
-  h2 {
-    font-size: 1.5em;
-  }
 
-  #banner-img {
-    padding-top: 35px;
+  h1 {
+    font-size: 1.5em;
   }
 
   #date {
     font-size: 1em;
   }
+}
+
+#map {
+  width: 100%;
+  height: 100%;
 }
