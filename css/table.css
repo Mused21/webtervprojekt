@@ -1,4 +1,4 @@
-table#programTable {
+#programTable {
   font-size: 1em;
   margin-top: 15px;
   border-collapse: collapse;
@@ -9,59 +9,97 @@ table#programTable {
   vertical-align: middle;
 }
 
-table#programTable td {
+#programTable td {
   border: 2px solid #815c54;
   padding: 5px 5px;
   vertical-align: middle;
 }
 
-table#programTable th {
+#programTable th {
   padding: 5px 5px;
   vertical-align: middle;
 }
 
-table#programTable thead {
+#programTable thead {
   background: linear-gradient(to top, #a17c74 0%, #815c54 100%);
   font-size: 1.1em;
   color: #F6EDBC;
   text-align: center;
 }
 
-table#programTable tbody tr td:first-child {
+#programTable tbody tr td:first-child {
   text-align: center;
   vertical-align: middle;
 }
 
-table#programTable tr:nth-child(even) {
+#programTable tr:nth-child(even) {
   background: #E6FBFF;
 }
 
+#print {
+  text-align: center;
+}
+
+#print a {
+  text-decoration: none;
+}
 .centered {
   text-align: center;
 }
 
 @media screen and (max-width: 900px) {
-  table#programTable td {
+  #programTable td {
     padding: 2px 2px;
   }
 }
 
 @media screen and (max-width: 600px) {
-  table#programTable > *{
+  #programTable>* {
     font-size: 0.75em;
   }
 
-  table#programTable td {
+  #programTable td {
     padding: 2px 2px;
     line-height: 0.9;
   }
 }
 
 @media screen and (max-width: 400px) {
-  table#programTable td {
+  #programTable td {
     padding: 0px 0px;
     letter-spacing: -1px;
     line-height: 0.9;
   }
+}
+
+@media print {
+  nav {
+    display: none;
+  }
+  footer {
+    display: none;
+  }
+  #programTable {
+    border: 2px solid #404040;
+  }
+  #programTable>* {
+    font-size: 1em;
+  }
+  #programTable td {
+    border: 2px solid #404040;
+    padding: 2px 2px;
+    line-height: 1.3;
+  }
+  #programTable thead {
+    font-weight: normal;
+    font-size: 1em;
+    color: #404040;
+    text-align: center;
+  }
+  #banner {
+    display: none;
+  }
+  #print {
+    display: none;
   }
 }
