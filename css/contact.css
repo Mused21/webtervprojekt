@@ -71,32 +71,39 @@
     width: 300px;
     height: 300px;
   }
+
   #paw {
     width: 90px;
   }
 }
+
 @media screen and (max-width: 600px) {
   .rounded {
     width: 200px;
     height: 200px;
   }
+
   #paw {
     width: 65px;
   }
 }
+
 @media screen and (max-width: 400px) {
   .rounded {
     width: 150px;
     height: 150px;
   }
+
   #paw {
     width: 50px;
   }
 }
+
 @keyframes appear {
   0% {
     color: #F6EDCF;
-    }
+  }
+
   100% {
     color: #404040;
   }

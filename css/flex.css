@@ -24,7 +24,7 @@
 }
 
 #flexContainer a:hover {
-    cursor: pointer;
-    margin: 25px;
-    transform: scale(1.1);
+  cursor: pointer;
+  margin: 25px;
+  transform: scale(1.1);
 }

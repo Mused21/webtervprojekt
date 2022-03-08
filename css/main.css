@@ -32,10 +32,10 @@ h1, h2 {
 h1 {
   font-size: 2.00em;
 }
+
 h2 {
   font-size: 1.50em;
 }
-
 
 p {
   list-style: none;
@@ -56,7 +56,7 @@ nav {
   flex-wrap: wrap;
   justify-content: space-around;
   background-color: #F6EDCF;
-/*  background: linear-gradient(to top, rgba(246,237,207,0.90), rgba(246,237,207,1), rgba(246,237,207,1), rgba(246,237,207,1), rgba(246,237,207,1));*/
+  /*  background: linear-gradient(to top, rgba(246,237,207,0.90), rgba(246,237,207,1), rgba(246,237,207,1), rgba(246,237,207,1), rgba(246,237,207,1));*/
 }
 
 nav a {
@@ -162,8 +162,6 @@ a:hover {
   #date {
     font-size: 2em;
   }
-
-
 }
 
 @media screen and (max-width: 600px) {
@@ -175,7 +173,6 @@ a:hover {
   footer {
     margin-top: 3em;
   }
-
 
   h1 {
     font-size: 1.5em;
