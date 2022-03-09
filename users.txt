@@ -1,0 +1,2 @@
+b:0;
+a:6:{s:5:"email";s:15:"super@admin.com";s:2:"pw";s:60:"$2y$10$IZZV.Xr7DawXRuHwdLr44Osh8GSGIty5HZr2Ysx9e1Vx/aNLv3lLK";s:4:"name";s:11:"Super Admin";s:5:"title";s:5:"Prof.";s:6:"choice";s:7:"speaker";s:4:"news";s:3:"yes";}

@@ -1,53 +1,65 @@
 <?php
   session_start();
 
+  include "common.php";
+  $users = loadUsers("users.txt");
+
   $error = [];
 
-  //Form process
   if (isset($_POST["Register"])) {
-    echo "submitted";
 
-    // Jól vannak e megadva?
-    if (!isset($_POST["name"]) || trim($_POST["name"]) === "")
-      $error[] = "Name required";
-      //erősen hiányos
+    if (!isset($_POST["name"]) || trim($_POST["name"]) === "") {
+      $error[] = "Name is a mandatory field.";
+    }
 
-    //értékátadások
-    if (isset($_POST["Title"]))
-      $Title = $_POST["Title"];
-    else $Title = NULL;
+    if (!isset($_POST["pw"]) || trim($_POST["pw"]) === ""
+    || !isset($_POST["pw2"]) || trim($_POST["pw2"]) === "") {
+      $error[] = "Password is a mandatory field.";
+    }
+
+    if (!isset($_POST["email"]) || trim($_POST["email"]) === "") {
+      $error[] = "E-mail is a mandatory field.";
+    }
+
+    if (isset($_POST["Title"])) {
+      $title = $_POST["Title"];
+    } else {
+      $title = NULL;
+    }
     $name = $_POST["name"];
     $email = $_POST["email"];
     $pw = $_POST["pw"];
-    //még nincs  $pw2 = $_POST["pw2"];
-    if (isset($_POST["choice"]))
+    $pw2 = $_POST["pw2"];
+    if (isset($_POST["choice"])) {
       $choice = $_POST["choice"];
-    else $choice = NULL;
-    if (isset($_POST["news"]))
-      $news = $_POST["news"];
-    else $news = NULL;
-
-/* későbbi fiunkció
-    foreach ($fiokok as $fiok) {
-      if ($fiok["felhasznalonev"] === $felhasznalonev)
-        $hibak[] = "A felhasználónév már foglalt!";
+    } else {
+     $choice = NULL;
     }
-*/
+    if (isset($_POST["news"])) {
+      $news = $_POST["news"];
+    } else {
+      $news = NULL;
+    }
 
-  //jelszo valid? későbbi funkció
-  /*    if (strlen($jelszo) < 5)
-        $hibak[] = "A jelszónak legalább 5 karakter hosszúnak kell lennie!";
 
-      if ($jelszo !== $jelszo2)
-        $hibak[] = "A jelszó és az ellenőrző jelszó nem egyezik!";*/
+    foreach ($users as $user) {
+      if ($user["email"] === $email)
+        $error[] = "The e-mail is already registered.";
+    }
 
-    if (count($error) === 0) { //Successful registration
-      //$jelszo = password_hash($jelszo, PASSWORD_DEFAULT);
-      //$fiokok[] = ["felhasznalonev" => $felhasznalonev, "jelszo" => $jelszo, "eletkor" => $eletkor, "nem" => $nem, "hobbik" => $hobbik];
-      //saveUsers("users.txt", $fiokok);
+    if (strlen($pw) < 8)
+        $error[] = "Password must be at least 8 character long!";
+
+    if ($pw !== $pw2)
+        $error[] = "The two given passwords do not match!";
+
+    if (count($error) === 0) {
+      $pw = password_hash($jelszo, PASSWORD_DEFAULT);
+      $users[] = ["email" => $email, "pw" => $pw, "name" => $name, "title" => $title, "choice" => $choice, "news" => $news];
+      saveUsers("users.txt", $users);
       $success = TRUE;
       header("Location: login.php");
-    } else {                    // fail...
+    } else {
       $success = FALSE;
     }
 }
@@ -84,7 +96,7 @@
           <table>
             <tr>
               <td>
-                <select name="Title" tabindex="4">
+                <select name="Title">
                   <option selected disabled>Title</option>
                   <option value="Mr." <?php if (isset($_POST['Title']) && $_POST['Title'] === 'Mr.') echo 'selected'; ?>/>Mr.</option>
                   <option value="Ms." <?php if (isset($_POST['Title']) && $_POST['Title'] === 'Ms.') echo 'selected'; ?>>Ms.</option>
@@ -97,19 +109,24 @@
               <td>
                 <input type="text" name="name"
                 value="<?php if (isset($_POST['name'])) echo $_POST['name']; ?>"
-                placeholder="John Doe" maxlength="50" autofocus tabindex="1" />
+                placeholder="John Doe" maxlength="50" autofocus/>
               </td>
             </tr>
             <tr>
               <td>
                 <input type="email" name="email"
                 value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>"
-                placeholder="john.doe@ignobel.com" tabindex="2" />
+                placeholder="john.doe@ignobel.com"/>
               </td>
             </tr>
             <tr>
               <td>
-                <input type="password" name="pw" id="pwid" value="" placeholder="Password" tabindex="3" />
+                <input type="password" name="pw" id="pwid" value="" placeholder="Password"/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="password" name="pw2" id="pwid" value="" placeholder="Password again"/>
               </td>
             </tr>
           </table>
@@ -118,7 +135,7 @@
           <input type="radio" id="choice_participant" name="choice" value="participant"
             <?php if (isset($_POST['choice']) && $_POST['choice'] === 'participant') echo 'checked'; ?> />
           <label for="choice_speaker">Speaker: </label>
-          <input type="radio" id="choice_speaker" name="choice" value="speaker" tabindex="5"
+          <input type="radio" id="choice_speaker" name="choice" value="speaker"
             <?php if (isset($_POST['choice']) && $_POST['choice'] === 'speaker') echo 'checked'; ?>/>
 
 
@@ -131,14 +148,14 @@
             <br />
 
             <label for="checkbox1">Subscribe for newsletters: </label>
-            <input type="checkbox" id="checkbox1" name="news" value="yes" tabindex="6"
+            <input type="checkbox" id="checkbox1" name="news" value="yes"
             <?php if (isset($_POST['news']) && $_POST['news'] === 'yes') echo 'checked'; ?> />
             <br />
 
 
-            <input type="submit" name="Register" value="Submit" tabindex="7" />
+            <input type="submit" name="Register" value="Submit" />
             <br />
-            <input type="reset" name="Reset" value="Reset" tabindex="8" id=resetbutton />
+            <input type="reset" name="Reset" value="Reset" id=resetbutton />
 
           </fieldset>
       </form>

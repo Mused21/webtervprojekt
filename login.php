@@ -1,27 +1,24 @@
 <?php
   session_start();
+  include 'common.php';
 
-
-//test accounts
-  $accounts = [
-    ["Title" => "Mr.", "name" => "admin", "pw" => "1234", "choice" => "speaker", "news" => NULL],
-    ["Title" => "Mr.", "name" => "admin2", "pw" => "1234", "choice" => "speaker", "news" => NULL]
-  ];
+  $users = loadUsers("users.txt");
 
   $msg = "";
   // valid login -> create _SESSION["user"]
   if (isset($_POST["Login"])) {
-    if (!isset($_POST["name"]) || trim($_POST["name"]) === "" || !isset($_POST["pw"]) || trim($_POST["pw"]) === "") {
-      $msg = "<strong>Error:</strong> Name and password required!";
+    if (!isset($_POST["email"]) || trim($_POST["email"]) === "" || !isset($_POST["pw"]) || trim($_POST["pw"]) === "") {
+      $msg = "<strong>Error:</strong> Email and password required!";
     } else {
-      $name = $_POST["name"];
+
+      $email = $_POST["email"];
       $pw = $_POST["pw"];
-      $msg = "Login failed! Invalid name or password!";
-      foreach ($accounts as $i) {
-        echo ($i["name"] . " - " . $i["pw"] . "<br>");
-        if ($i["name"] === $name &&   $i["pw"] === $pw) {// hashelt esetben ez később password_verify metódus lesz
+      $msg = "Login failed! Invalid e-mail or password!";
+
+      foreach ($users as $user) {
+        if ($user["email"] ??= $email && password_verify($pw, $user["pw"])) {
           $msg = "Welcome!";
-          $_SESSION["user"] = $i;
+          $_SESSION["user"] = $user;
           header("Location: index.php");
         }
       }
@@ -57,21 +54,20 @@
           <table>
             <tr>
               <td>
-                <input type="text" name="name"
-                value="<?php if (isset($_POST['name'])) echo $_POST['name']; ?>"
-                placeholder="John Doe" maxlength="50" autofocus tabindex="1" />
+                <input type="email" name="email"
+                value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>"
+                placeholder="john.doe@ignobel.com" maxlength="50" autofocus />
               </td>
             </tr>
             <tr>
               <td>
                 <input type="password" name="pw" id="pwid"
-                value=""
-                placeholder="Password"  tabindex="3" />
+                placeholder="Password"/>
               </td>
             </tr>
             <tr>
               <td>
-                <input type="submit" name="Login" value="Login" tabindex="7" />
+                <input type="submit" name="Login" value="Login" />
               </td>
             </tr>
 
