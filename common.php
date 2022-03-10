@@ -32,6 +32,18 @@
     fclose($file);
   }
 
+  function deleteUser($path, $user) {
+    $toRemove = serialize($user);
+    $lines = file($path, FILE_IGNORE_NEW_LINES);
+    foreach($lines as $key => $line) {
+        if($line === $toRemove) {
+          unset($lines[$key]);
+        }
+    }
+    $data = implode(PHP_EOL, $lines);
+    file_put_contents($path, $data);
+  }
+
   function isNotFilled($field) {
     if (!isset($_POST[$field]) || trim($_POST[$field]) === "") {
       return true;

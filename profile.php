@@ -76,6 +76,10 @@
           <td><?php echo ($_SESSION["user"]["choice"] === "speaker" ? "Yes" : "No"); ?></td>
         </tr>
       </table>
+      <br />
+      <form action="delete.php" method="POST" onsubmit="return confirm('Are you sure?');">
+        <input id="deleteProfile" type="submit" name="delete" value="DELETE PROFILE"/>
+      </form>
     </div>
   <?php include_once "footer.html"; ?>
 </body>
