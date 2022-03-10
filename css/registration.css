@@ -21,7 +21,7 @@ table {
   margin: auto;
 }
 
-input[type="submit"] {
+#submitbutton {
   background-color: #4CAF50;
   color: #FFF;
   border: none;
@@ -33,7 +33,7 @@ input[type="submit"] {
   margin-top: 20px;
 }
 
-input[type="reset"] {
+#resetbutton {
   background-color: #555555;
   color: #FFF;
   border: none;
@@ -57,7 +57,7 @@ input:focus {
 }
 
 @media screen and (max-width: 400px) {
-  input[type="reset"], input[type="submit"] {
+  #resetbutton, #submitbutton {
     width: 150px;
   }
 }

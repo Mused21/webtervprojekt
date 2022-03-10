@@ -31,4 +31,38 @@
 
     fclose($file);
   }
+
+  function isNotFilled($field) {
+    if (!isset($_POST[$field]) || trim($_POST[$field]) === "") {
+      return true;
+    }
+    return false;
+  }
+
+  function uploadProfilePicture($email) {
+    global $uploadError;
+
+    if (isset($_FILES["pic"]) && is_uploaded_file($_FILES["pic"]["tmp_name"])) {
+      $allowed_extensions = ["png", "jpg", "jpeg"];
+      $extension = strtolower(pathinfo($_FILES["pic"]["name"], PATHINFO_EXTENSION));
+
+      if (in_array($extension, $allowed_extensions)) {
+        if ($_FILES["pic"]["error"] === 0) {
+          if ($_FILES["pic"]["size"] <= 31457280) {
+            $path = "profile_pics/" . $email . "." . $extension;
+
+            if (!move_uploaded_file($_FILES["pic"]["tmp_name"], $path)) {
+              $uploadError = "Cannot move the file!";
+            }
+          } else {
+            $uploadError = "File should be less than 30 MB!";
+          }
+        } else {
+          $uploadError = "Upload failed!";
+        }
+      } else {
+        $uploadError = "Not supported extension!";
+      }
+    }
+  }
 ?>

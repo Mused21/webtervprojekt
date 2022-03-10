@@ -17,9 +17,7 @@
     $page='venue.php';
     include_once "nav.php";
   ?>
-
   <div class="content">
-    <h1>Venue</h1>
     <video controls preload="metadata">
       <source src="media/szeged_video_480p.mp4#t=0.5" type="video/mp4" />
     </video>

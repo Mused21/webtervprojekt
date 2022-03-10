@@ -8,54 +8,59 @@
 
   if (isset($_POST["Register"])) {
 
-    if (!isset($_POST["name"]) || trim($_POST["name"]) === "") {
+    if (isNotFilled("name")) {
       $error[] = "Name is a mandatory field.";
     }
+    $name = $_POST["name"];
 
-    if (!isset($_POST["pw"]) || trim($_POST["pw"]) === ""
-    || !isset($_POST["pw2"]) || trim($_POST["pw2"]) === "") {
-      $error[] = "Password is a mandatory field.";
-    }
-
-    if (!isset($_POST["email"]) || trim($_POST["email"]) === "") {
+    if (isNotFilled("email")) {
       $error[] = "E-mail is a mandatory field.";
     }
+    $email = $_POST["email"];
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $error[] = "The e-mail is not valid.";
+    }
+
+    if (isNotFilled("pw") || isNotFilled("pw2")) {
+      $error[] = "Password is a mandatory field.";
+    }
+    $pw = $_POST["pw"];
+    $pw2 = $_POST["pw2"];
+
+    if (strlen($pw) < 8)
+      $error[] = "Password must be at least 8 characters long!";
+
+    if ($pw !== $pw2)
+      $error[] = "The two given passwords do not match!";
 
     if (isset($_POST["Title"])) {
       $title = $_POST["Title"];
     } else {
       $title = NULL;
     }
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $pw = $_POST["pw"];
-    $pw2 = $_POST["pw2"];
-    if (isset($_POST["choice"])) {
-      $choice = $_POST["choice"];
+    if (!isset($_POST["choice"])) {
+      $error[] = "Please select how are you going to participate.";
     } else {
-     $choice = NULL;
+      $choice = $_POST["choice"];
     }
+
     if (isset($_POST["news"])) {
       $news = $_POST["news"];
     } else {
       $news = NULL;
     }
 
-
     foreach ($users as $user) {
-      if ($user["email"] === $email)
+      echo gettype($user);
+      if ($user["email"] === $email) {
         $error[] = "The e-mail is already registered.";
+      }
     }
 
-    if (strlen($pw) < 8)
-        $error[] = "Password must be at least 8 character long!";
-
-    if ($pw !== $pw2)
-        $error[] = "The two given passwords do not match!";
-
     if (count($error) === 0) {
-      $pw = password_hash($jelszo, PASSWORD_DEFAULT);
-      $users[] = ["email" => $email, "pw" => $pw, "name" => $name, "title" => $title, "choice" => $choice, "news" => $news];
+      $pw = password_hash($pw, PASSWORD_DEFAULT);
+      $users[] = ["email" => $email, "pw" => $pw, "name" => $name, "title" => $title, "choice" => $choice, "news" => $news, "admin" => FALSE];
       saveUsers("users.txt", $users);
       $success = TRUE;
       header("Location: login.php");
@@ -63,7 +68,6 @@
       $success = FALSE;
     }
 }
-
   ?>
 <!DOCTYPE html>
 <html lang='en'>
@@ -82,17 +86,14 @@
   ?>
 
   <div class="content">
-    <h1>Registration</h1>
     <p class="content">Registration is a <b>necessity</b> if you would like to participate in the conference.<br />
       Please fill out the form below.<br />
       If you would like to become a speaker, please attach your abstract.
     </p>
-
     <div id="form">
-      <form action="" method="POST" enctype="application/x-www-form-urlencoded" autocomplete="on">
-        <fieldset>
-          <legend>Registration form</legend>
-
+      <fieldset>
+        <legend>Registration form</legend>
+          <form action="#" method="POST" enctype="application/x-www-form-urlencoded" autocomplete="on">
           <table>
             <tr>
               <td>
@@ -151,24 +152,23 @@
             <input type="checkbox" id="checkbox1" name="news" value="yes"
             <?php if (isset($_POST['news']) && $_POST['news'] === 'yes') echo 'checked'; ?> />
             <br />
-
-
-            <input type="submit" name="Register" value="Submit" />
+            <input type="submit" name="Register" value="Submit" id="submitbutton" />
             <br />
-            <input type="reset" name="Reset" value="Reset" id=resetbutton />
-
-          </fieldset>
+      </form>
+      <form action="resetform.php" method="link">
+            <input type="submit" name="Reset" value="Reset" id="resetbutton" />
       </form>
       <?php
         if (isset($success) && $success === TRUE) {
           echo "<p>Successful registration!</p>";
         } else {
           foreach ($error as $i) {
-            echo "<p>" . $i . "</p>";
+            echo '<div class="error">' . $i . "</div>";
           }
         }
-
       ?>
+    </fieldset>
+
     </div>
   </div>
   <?php include_once "footer.html"; ?>

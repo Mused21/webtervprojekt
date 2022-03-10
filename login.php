@@ -5,18 +5,16 @@
   $users = loadUsers("users.txt");
 
   $msg = "";
-  // valid login -> create _SESSION["user"]
   if (isset($_POST["Login"])) {
-    if (!isset($_POST["email"]) || trim($_POST["email"]) === "" || !isset($_POST["pw"]) || trim($_POST["pw"]) === "") {
+    if (isNotFilled("email") || isNotFilled("pw")) {
       $msg = "<strong>Error:</strong> Email and password required!";
     } else {
-
       $email = $_POST["email"];
       $pw = $_POST["pw"];
       $msg = "Login failed! Invalid e-mail or password!";
 
       foreach ($users as $user) {
-        if ($user["email"] ??= $email && password_verify($pw, $user["pw"])) {
+        if ($user["email"] === $email && password_verify($pw, $user["pw"])) {
           $msg = "Welcome!";
           $_SESSION["user"] = $user;
           header("Location: index.php");
@@ -31,7 +29,7 @@
 
 <head>
   <link rel="stylesheet" type="text/css" media="all" href="css/main.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="css/form.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="css/registration.css" />
   <?php include_once "head.html"; ?>
 </head>
 
@@ -43,14 +41,12 @@
   ?>
 
   <div class="content">
-    <h1>Log in</h1>
     <p class="content">
     </p>
     <div id="form2">
       <form action="" method="POST" enctype="application/x-www-form-urlencoded" autocomplete="on">
         <fieldset>
-          <legend>Login form</legend>
-
+          <legend>Login</legend>
           <table>
             <tr>
               <td>
@@ -74,7 +70,7 @@
           </table>
         </fieldset>
       </form>
-        <?php echo ($msg . "<br/>"); ?>
+      <?php echo '<div class="error">' . $msg . "</div>";?>
     </div>
   </div>
   <?php include_once "footer.html"; ?>
