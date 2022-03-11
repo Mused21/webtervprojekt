@@ -1,11 +1,9 @@
 <?php
   session_start();
-
   include "common.php";
-  $users = loadUsers("users.txt");
 
   $error = [];
-
+  $users = loadUsers("users.txt");
   if (isset($_POST["Register"])) {
 
     if (isNotFilled("name")) {
@@ -28,11 +26,13 @@
     $pw = $_POST["pw"];
     $pw2 = $_POST["pw2"];
 
-    if (strlen($pw) < 8)
+    if (strlen($pw) < 8){
       $error[] = "Password must be at least 8 characters long!";
+    }
 
-    if ($pw !== $pw2)
+    if ($pw !== $pw2) {
       $error[] = "The two given passwords do not match!";
+    }
 
     if (isset($_POST["Title"])) {
       $title = $_POST["Title"];
@@ -52,7 +52,6 @@
     }
 
     foreach ($users as $user) {
-      echo gettype($user);
       if ($user["email"] === $email) {
         $error[] = "The e-mail is already registered.";
       }
@@ -67,7 +66,7 @@
     } else {
       $success = FALSE;
     }
-}
+  }
   ?>
 <!DOCTYPE html>
 <html lang='en'>

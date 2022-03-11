@@ -44,11 +44,15 @@
     file_put_contents($path, $data);
   }
 
-  function isNotFilled($field) {
+  function isFilled($field) {
     if (!isset($_POST[$field]) || trim($_POST[$field]) === "") {
-      return true;
+      return false;
     }
-    return false;
+    return true;
+  }
+
+  function isNotFilled($field) {
+    return !isFilled($field);
   }
 
   function uploadProfilePicture($email) {

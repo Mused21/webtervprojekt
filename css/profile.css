@@ -7,3 +7,13 @@
 table {
   margin: auto;
 }
+
+#deleteProfile {
+  color: red;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+input {
+  text-align: center;
+}
