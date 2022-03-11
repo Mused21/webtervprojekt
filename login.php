@@ -2,6 +2,10 @@
   session_start();
   include 'common.php';
 
+  if (isset($_SESSION["user"])) {
+    header("Location: profile.php");
+  }
+
   $users = loadUsers("users.txt");
 
   $msg = "";

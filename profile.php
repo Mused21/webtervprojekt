@@ -178,6 +178,14 @@
       </table>
     </form>
       <br />
+      <?php
+      if ($_SESSION["user"]["admin"]) {
+        echo '<form action="admin.php">
+                <input id="adminButton" type="submit" name="delete" value="Admin Room"/>
+              </form>';
+      }
+       ?>
+      <br />
       <form action="delete.php" method="POST" onsubmit="return confirm('Are you sure?');">
         <input id="deleteProfile" type="submit" name="delete" value="DELETE PROFILE"/>
       </form>
