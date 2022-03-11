@@ -8,3 +8,14 @@ table {
   padding: 5px 5px;
   vertical-align: middle;
 }
+
+.profilepic {
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+}
+
+.redcross {
+  width: 20px;
+  height: 20px;
+}

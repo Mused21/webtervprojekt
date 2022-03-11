@@ -29,10 +29,21 @@
 
     <table>
     <?php
-    echo "<tr><thead><tr><th>Title</th><th>Name</th><th>E-mail</th><th>Speaker</th><th>Newsletter</th><th>Level</th><th>Block</th><th>Delete</th></tr></thead>";
+    $profile_pic = "profile_pics/default.png";
+    $extensions = ["png", "jpg", "jpeg"];
+
+    echo "<tr><thead><tr><th>Picture</th><th>Title</th><th>Name</th><th>E-mail</th><th>Speaker</th><th>Newsletter</th><th>Level</th><th>Block</th><th>Delete</th></tr></thead>";
     foreach ($users as $user) {
+      $path = "profile_pics/" . $user["email"];
+      foreach ($extensions as $extension) {
+        if (file_exists($path . "." . $extension)) {
+          $profile_pic = $path . "." . $extension;
+        }
+      }
       echo
       "<tr><td>"
+      . "<img class='profilepic' src='" . $profile_pic . "'/>"
+      . "</td><td>"
       . $user['title']
       . "</td><td>"
       . $user['name']
@@ -44,6 +55,10 @@
       . ($user['news'] === 'yes' ? 'yes' : 'no')
       . "</td><td>"
       . ($user['admin'] ? 'admin' : 'user')
+      . "</td><td>"
+      . ($user['admin'] ? '-' : "<input class='redcross' type='image' src='media/redcross.png' />")
+      . "</td><td>"
+      . ($user['admin'] ? '-' : "<input class='redcross' type='image' src='media/redcross.png' />")
       . "</td> </tr>";
     }
     ?>

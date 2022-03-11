@@ -33,6 +33,14 @@
   }
 
   function deleteUser($path, $user) {
+    $extensions = ["png", "jpg", "jpeg"];
+    $picpath = "profile_pics/" . $user["email"];
+    foreach ($extensions as $extension) {
+      if (file_exists($picpath . "." . $extension)) {
+        $profile_pic = $picpath . "." . $extension;
+      }
+    }
+
     $toRemove = serialize($user);
     $lines = file($path, FILE_IGNORE_NEW_LINES);
     foreach($lines as $key => $line) {
@@ -42,6 +50,9 @@
     }
     $data = implode(PHP_EOL, $lines);
     file_put_contents($path, $data);
+    if (isset($profile_pic)) {
+      unlink($profile_pic);
+    }
   }
 
   function isFilled($field) {
