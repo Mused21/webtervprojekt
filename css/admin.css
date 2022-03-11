@@ -1,0 +1,10 @@
+table {
+  font-size: 1em;
+  margin-top: 15px;
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #F6EDBC;
+  border: 2px solid #815c54;
+  padding: 5px 5px;
+  vertical-align: middle;
+}

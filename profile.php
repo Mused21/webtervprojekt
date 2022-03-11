@@ -181,7 +181,7 @@
       <?php
       if ($_SESSION["user"]["admin"]) {
         echo '<form action="admin.php">
-                <input id="adminButton" type="submit" name="delete" value="Admin Room"/>
+                <input id="adminButton" type="submit" value="Admin Room"/>
               </form>';
       }
        ?>
