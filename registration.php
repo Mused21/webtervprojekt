@@ -90,8 +90,7 @@
 
   <div class="content">
     <p class="content">Registration is a <b>necessity</b> if you would like to participate in the conference.<br />
-      Please fill out the form below.<br />
-      If you would like to become a speaker, please attach your abstract.
+      Please fill out the form below. Your password must be at least 8 characters.<br />
     </p>
     <div id="form">
       <fieldset>
