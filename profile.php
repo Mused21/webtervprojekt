@@ -42,7 +42,7 @@
       $error[] = "You must change either your password or your e-mail.";
     }
 
-    $users = loadUsers("users.txt");
+    $users = loadUsers();
     $currentEmail = $_SESSION["user"]["email"];
     $currentPw = $_SESSION["user"]["pw"];
     if (isFilled("newEmail") && $_SESSION["user"]["email"] !== $_POST["newEmail"]) {
@@ -88,7 +88,7 @@
         $new_profile_pic = "profile_pics/" . $currentEmail . "." . $extension;
         rename($profile_pic, $new_profile_pic);
       }
-      saveUsers("users.txt", $users);
+      saveUsers($users);
       $success = TRUE;
       header("Location: delete.php");
     } else {

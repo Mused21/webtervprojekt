@@ -6,7 +6,7 @@
     header("Location: profile.php");
   }
 
-  $users = loadUsers("users.txt");
+  $users = loadUsers();
 
   $msg = "";
   if (isset($_POST["Login"])) {
@@ -19,9 +19,13 @@
 
       foreach ($users as $user) {
         if ($user["email"] === $email && password_verify($pw, $user["pw"])) {
-          $msg = "Welcome!";
-          $_SESSION["user"] = $user;
-          header("Location: index.php");
+          if ($user["block"]) {
+            $msg ="Failed to log in, your account is blocked!";
+          } else {
+            $msg = "Welcome!";
+            $_SESSION["user"] = $user;
+            header("Location: profile.php");
+          }
         }
       }
     }

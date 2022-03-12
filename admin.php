@@ -5,10 +5,27 @@
   if (!isset($_SESSION["user"])) {
   	header("Location: login.php");
   }
+
   if(!$_SESSION["user"]["admin"]) {
     header("Location: profile.php");
   }
-  $users = loadUsers("users.txt");
+  $users = loadUsers();
+
+  if (isset($_POST["block"])) {
+    blockUser(findUserByEmail($_POST["block"]));
+    echo "<meta http-equiv='refresh' content='0'>";
+  }
+
+  if (isset($_POST["unblock"])) {
+    unblockUser(findUserByEmail($_POST["unblock"]));
+    echo "<meta http-equiv='refresh' content='0'>";
+  }
+
+  if (isset($_POST["deleteUser"])) {
+    deleteUser(findUserByEmail($_POST["deleteUser"]));
+    echo "<meta http-equiv='refresh' content='0'>";
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -56,9 +73,29 @@
       . "</td><td>"
       . ($user['admin'] ? 'admin' : 'user')
       . "</td><td>"
-      . ($user['admin'] ? '-' : "<input class='redcross' type='image' src='media/redcross.png' />")
+      . ($user['admin'] ? '-' : ($user['block'] ?
+      "<form action='' method='POST'>"
+      .
+      "<input type='hidden' name='unblock' value='" . $user['email'] . "'/>"
+      .
+      "<input class='greencheck' type='image' src='media/greencheckmark.png' />"
+      .
+      "</form>" :
+      "<form action='admin.php' method='POST'>"
+      .
+      "<input type='hidden' name='block' value='" . $user['email'] . "'/>"
+      .
+      "<input class='redcross' type='image' src='media/redcross.png' />"
+      .
+      "</form>"
+      ))
       . "</td><td>"
-      . ($user['admin'] ? '-' : "<input class='redcross' type='image' src='media/redcross.png' />")
+      . ($user['admin'] ? '-' :
+      "<form action='admin.php' method='POST'>"
+      .
+      "<input type='hidden' name='deleteUser' value='" . $user['email'] . "'/>"
+      .
+      "<input class='redcross' type='image' src='media/redcross.png' /> </form>")
       . "</td> </tr>";
     }
     ?>

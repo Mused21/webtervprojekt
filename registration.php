@@ -7,7 +7,7 @@
   }
 
   $error = [];
-  $users = loadUsers("users.txt");
+  $users = loadUsers();
   if (isset($_POST["Register"])) {
 
     if (isNotFilled("name")) {
@@ -41,7 +41,7 @@
     if (isset($_POST["Title"])) {
       $title = $_POST["Title"];
     } else {
-      $title = NULL;
+      $error[] = "Please select a title!";
     }
     if (!isset($_POST["choice"])) {
       $error[] = "Please select how are you going to participate.";
@@ -63,8 +63,8 @@
 
     if (count($error) === 0) {
       $pw = password_hash($pw, PASSWORD_DEFAULT);
-      $users[] = ["email" => $email, "pw" => $pw, "name" => $name, "title" => $title, "choice" => $choice, "news" => $news, "admin" => FALSE];
-      saveUsers("users.txt", $users);
+      $users[] = ["email" => $email, "pw" => $pw, "name" => $name, "title" => $title, "choice" => $choice, "news" => $news, "admin" => FALSE, "block" => FALSE];
+      saveUsers($users);
       $success = TRUE;
       header("Location: login.php");
     } else {

@@ -2,7 +2,7 @@
 session_start();
 include "common.php";
 
-deleteUser("users.txt", $_SESSION["user"]);
+deleteUser($_SESSION["user"]);
 
 session_unset();
 session_destroy();

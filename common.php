@@ -1,8 +1,8 @@
 <?php
 
-  function loadUsers($path) {
+  function loadUsers() {
     $users = [];
-    $file = fopen($path, "r");
+    $file = fopen("users.txt", "r");
 
     if ($file === FALSE) {
       die("ERROR: File could not be opened");
@@ -17,8 +17,8 @@
     return $users;
   }
 
-  function saveUsers($path, $users) {
-    $file = fopen($path, "w");
+  function saveUsers($users) {
+    $file = fopen("users.txt", "w");
 
     if ($file === FALSE) {
       die("ERROR: File could not be opened");
@@ -32,7 +32,7 @@
     fclose($file);
   }
 
-  function deleteUser($path, $user) {
+  function deleteUser($user) {
     $extensions = ["png", "jpg", "jpeg"];
     $picpath = "profile_pics/" . $user["email"];
     foreach ($extensions as $extension) {
@@ -42,17 +42,48 @@
     }
 
     $toRemove = serialize($user);
-    $lines = file($path, FILE_IGNORE_NEW_LINES);
+    $lines = file("users.txt", FILE_IGNORE_NEW_LINES);
     foreach($lines as $key => $line) {
         if($line === $toRemove) {
           unset($lines[$key]);
         }
     }
     $data = implode(PHP_EOL, $lines);
-    file_put_contents($path, $data);
+    file_put_contents("users.txt", $data);
+
     if (isset($profile_pic)) {
       unlink($profile_pic);
     }
+  }
+
+  function findUserByEmail($email) {
+    $users = loadUsers("users.txt");
+    foreach ($users as $user) {
+      if ($user['email'] === $email) {
+        return $user;
+      }
+    }
+    return NULL;
+  }
+
+  function blockUser($toBlock) {
+    $users = loadUsers("users.txt");
+    foreach ($users as &$user) {
+      if ($user['email'] === $toBlock['email']) {
+        $user['block'] = TRUE;
+      }
+    }
+    saveUsers($users);
+  }
+
+  function unblockUser($toUnblock) {
+    $users = loadUsers("users.txt");
+    foreach ($users as &$user) {
+      if ($user['email'] === $toUnblock['email']) {
+        $user['block'] = FALSE;
+      }
+    }
+    saveUsers($users);
   }
 
   function isFilled($field) {
