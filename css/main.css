@@ -21,6 +21,11 @@ footer {
   text-align: center;
 }
 
+.lang {
+  width : 25px;
+  padding-left: 8px;
+}
+
 h1, h2 {
   clear: left;
   color: #815c54;

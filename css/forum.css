@@ -1,0 +1,41 @@
+#commentBox {
+  overflow: auto;
+  margin: auto;
+  margin-top: 15px;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 800px;
+  background-color: #F6EDBC;
+  border: 2px solid #815c54;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #999999 ;
+}
+
+#time {
+  padding: 5px;
+	float: right;
+}
+#profilePic {
+  width: 100px;
+  float: left;
+  margin: 5px 5px;
+  padding: 5px;
+  border: 2px solid #A35E76;
+  border-radius: 10px;
+}
+#commentText {
+  text-align: justify;
+}
+
+#commentButton {
+  background-color: #4CAF50;
+  color: #FFF;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  width: 200px;
+  height: 35px;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 10px;
+}

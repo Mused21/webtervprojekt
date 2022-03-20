@@ -3,7 +3,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang='en'>
+<html lang= <?php echo($_COOKIE["language"]);?>>
 
 <head>
   <link rel="stylesheet" type="text/css" media="all" href="css/main.css" />
@@ -113,7 +113,7 @@
   </div>
 
 
-<?php include_once "footer.html"; ?>
+<?php include_once "footer.php"; ?>
 
 </body>
 

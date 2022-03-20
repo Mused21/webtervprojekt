@@ -29,7 +29,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang='en'>
+<html lang= <?php echo($_COOKIE["language"]);?>>
 <head>
   <link rel="stylesheet" type="text/css" media="all" href="css/main.css" />
   <link rel="stylesheet" type="text/css" media="all" href="css/admin.css" />
@@ -46,12 +46,11 @@
 
     <table>
     <?php
-    $profile_pic = "profile_pics/default.png";
     $extensions = ["png", "jpg", "jpeg"];
-
     echo "<tr><thead><tr><th>Picture</th><th>Title</th><th>Name</th><th>E-mail</th><th>Speaker</th><th>Newsletter</th><th>Level</th><th>Block</th><th>Delete</th></tr></thead>";
     foreach ($users as $user) {
       $path = "profile_pics/" . $user["email"];
+      $profile_pic = "profile_pics/default.svg";
       foreach ($extensions as $extension) {
         if (file_exists($path . "." . $extension)) {
           $profile_pic = $path . "." . $extension;
@@ -98,9 +97,10 @@
       "<input class='redcross' type='image' src='media/redcross.png' /> </form>")
       . "</td> </tr>";
     }
+
     ?>
     </table>
 
-  <?php include_once "footer.html"; ?>
+  <?php include_once "footer.php"; ?>
 </body>
 </html>

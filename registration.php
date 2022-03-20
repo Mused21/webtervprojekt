@@ -61,9 +61,16 @@
       }
     }
 
+    foreach ($users as $user) {
+      if (strtolower($user["name"]) === strtolower($name)) {
+        $error[] = "The name is already registered.";
+      }
+    }
+
+
     if (count($error) === 0) {
       $pw = password_hash($pw, PASSWORD_DEFAULT);
-      $users[] = ["email" => $email, "pw" => $pw, "name" => $name, "title" => $title, "choice" => $choice, "news" => $news, "admin" => FALSE, "block" => FALSE];
+      $users[] = ["email" => $email, "pw" => $pw, "name" => $name, "title" => $title, "choice" => $choice, "news" => $news, "admin" => FALSE, "block" => FALSE, "hidden" => FALSE];
       saveUsers($users);
       $success = TRUE;
       header("Location: login.php");
@@ -73,7 +80,7 @@
   }
   ?>
 <!DOCTYPE html>
-<html lang='en'>
+<html lang= <?php echo($_COOKIE["language"]);?>>
 
 <head>
   <link rel="stylesheet" type="text/css" media="all" href="css/main.css" />
@@ -89,8 +96,12 @@
   ?>
 
   <div class="content">
-    <p class="content">Registration is a <b>necessity</b> if you would like to participate in the conference.<br />
-      Please fill out the form below. Your password must be at least 8 characters.<br />
+    <p class="content">
+      <?php if ($_COOKIE["language"]==="en")
+        echo "Registration is a <b>necessity</b> if you would like to participate in the conference.<br />
+      Please fill out the form below. Your password must be at least 8 characters.<br />";
+            if ($_COOKIE["language"]==="es") echo "La inscripción es una <b>necesidad</b> si desea participar en la conferencia.<br />
+       Por favor, rellene el siguiente formulario. Su contraseña debe tener al menos 8 caracteres.<br />"; ?>
     </p>
     <div id="form">
       <fieldset>
@@ -173,7 +184,7 @@
 
     </div>
   </div>
-  <?php include_once "footer.html"; ?>
+  <?php include_once "footer.php"; ?>
   <!--
   <script>
     const isSpeaker = document.querySelector('#choice_speaker');

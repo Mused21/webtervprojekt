@@ -6,7 +6,7 @@
   	header("Location: login.php");
   }
 
-  $profile_pic = "profile_pics/default.png";
+  $profile_pic = "profile_pics/default.svg";
   $path = "profile_pics/" . $_SESSION["user"]["email"];
   $extensions = ["png", "jpg", "jpeg"];
 
@@ -98,7 +98,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang='en'>
+<html lang= <?php echo($_COOKIE["language"]);?>>
 <head>
   <link rel="stylesheet" type="text/css" media="all" href="css/main.css" />
   <link rel="stylesheet" type="text/css" media="all" href="css/profile.css" />
@@ -112,8 +112,15 @@
   ?>
   <div class="content">
     <h1>My profile</h1>
-
-    <table>
+    <?php
+    if ($_SESSION["user"]["admin"]) {
+      echo '<form action="admin.php">
+              <input id="adminButton" type="submit" value="Admin Room" id="adminButton"/>
+            </form>';
+    }
+     ?>
+    <br />
+    <table id=picTable>
       <tr>
         <th colspan="2">
           <img id="profilepic" src="<?php echo $profile_pic; ?>" alt="Profile picture"/>
@@ -123,38 +130,35 @@
         <th colspan="2">
           <form action="profile.php" method="POST" enctype="multipart/form-data">
             <input type="file" name="pic" accept="image/*"/>
-            <input type="submit" name="upload-btn" value="Upload a picture"/>
+            <input type="submit" name="upload-btn" value="Upload a picture" id="uploadButton"/>
           </form>
         </th>
       </tr>
     </table>
+
     <form action="" method="POST" enctype="application/x-www-form-urlencoded">
       <table id="profileTable">
         <tr>
           <th>Title:</th>
-          <td>
-              <?php echo $_SESSION["user"]['title']; ?>
-          </td>
+          <td><?php echo $_SESSION["user"]['title']; ?></td>
         </tr>
         <tr>
           <th>Name:</th>
-          <td>
-            <?php echo $_SESSION["user"]['name']; ?>
-          </td>
+          <td><?php echo $_SESSION["user"]['name'];?></td>
         </tr>
+
         <tr>
           <th>E-mail:</th>
-          <td>
-            <input type="text" name="newEmail" value="<?php echo $_SESSION["user"]['email']; ?>" placeholder="<?php echo $_SESSION["user"]['email']; ?>"/>
-          </td>
+          <td><input type="text" name="newEmail" value="<?php echo $_SESSION["user"]['email']; ?>" placeholder="<?php echo $_SESSION["user"]['email']; ?>"/></td>
         </tr>
+
         <tr>
           <th>Speaker:</th>
           <td><?php echo ($_SESSION["user"]["choice"] === "speaker" ? "Yes" : "No"); ?></td>
         </tr>
       </table>
-      <br />
-      <table>
+
+      <table id = "changeTable">
         <tr>
           <td>
             <input type="password" name="newPw" value="" placeholder="New Password"/>
@@ -172,23 +176,17 @@
         </tr>
         <tr>
           <td>
-        <input type="submit" name="Change" value="Change data"/>
+        <input type="submit" name="Change" value="Change data" id="changeButton"/>
           </td>
+        </tr>
+        <tr>
+          <td>
+            <form action="delete.php" method="POST" onsubmit="return confirm('Are you sure?');">
+              <input id="deleteProfile" type="submit" name="delete" value="DELETE PROFILE"/>
+            </form>    </td>
         </tr>
       </table>
     </form>
-      <br />
-      <?php
-      if ($_SESSION["user"]["admin"]) {
-        echo '<form action="admin.php">
-                <input id="adminButton" type="submit" value="Admin Room"/>
-              </form>';
-      }
-       ?>
-      <br />
-      <form action="delete.php" method="POST" onsubmit="return confirm('Are you sure?');">
-        <input id="deleteProfile" type="submit" name="delete" value="DELETE PROFILE"/>
-      </form>
     </div>
     <br />
     <?php
@@ -205,6 +203,6 @@
         }
       }
     ?>
-  <?php include_once "footer.html"; ?>
+  <?php include_once "footer.php"; ?>
 </body>
 </html>

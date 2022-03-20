@@ -33,7 +33,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang='en'>
+<html lang= <?php echo($_COOKIE["language"]);?>>
 
 <head>
   <link rel="stylesheet" type="text/css" media="all" href="css/main.css" />
@@ -71,7 +71,7 @@
             </tr>
             <tr>
               <td>
-                <input type="submit" name="Login" value="Login" />
+                <input type="submit" name="Login" value="Login" id="loginButton"/>
               </td>
             </tr>
 
@@ -81,7 +81,7 @@
       <?php echo '<div class="error">' . $msg . "</div>";?>
     </div>
   </div>
-  <?php include_once "footer.html"; ?>
+  <?php include_once "footer.php"; ?>
   </div>
 </body>
 </html>

@@ -66,6 +66,26 @@
     return NULL;
   }
 
+  function findEmailbyName($name) {
+    $users = loadUsers("users.txt");
+    foreach ($users as $user) {
+      if ($user['name'] === $name) {
+        return $user["email"];
+      }
+    }
+    return NULL;
+  }
+  function findUserByName($name) {
+    $users = loadUsers("users.txt");
+    foreach ($users as $user) {
+      if ($user['name'] === $name) {
+        return $user;
+      }
+    }
+    return NULL;
+  }
+
+
   function blockUser($toBlock) {
     $users = loadUsers("users.txt");
     foreach ($users as &$user) {
@@ -123,4 +143,37 @@
       }
     }
   }
+  function loadComments() {
+    $comments = [];
+    $file = fopen("comments.txt", "r");
+
+    if ($file === FALSE) {
+      die("ERROR: File could not be opened");
+    }
+
+    while (($line = fgets($file)) !== FALSE) {
+      $comment = unserialize($line);
+      $comments[] = $comment;
+    }
+
+    fclose($file);
+    return $comments;
+  }
+
+  function saveComments($comments) {
+    $file = fopen("comments.txt", "w");
+
+    if ($file === FALSE) {
+      die("ERROR: File could not be opened");
+    }
+
+    foreach($comments as $comment) {
+      $serialized_comment = serialize($comment);
+      fwrite($file, $serialized_comment . "\n");
+    }
+
+    fclose($file);
+  }
+
+
 ?>

@@ -43,6 +43,19 @@ table {
   height: 25px;
   cursor: pointer;
 }
+#loginButton {
+  background-color: #4CAF50;
+  color: #FFF;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  width: 200px;
+  height: 45px;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
 
 input:focus {
   background-color: #E6FBFF;

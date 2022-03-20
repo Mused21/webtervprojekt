@@ -9,11 +9,110 @@ table {
 }
 
 #deleteProfile {
-  color: red;
+  color: #ba0202;
   font-size: 15px;
   font-weight: bold;
+  background-color: #4CAF50;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  width: 200px;
+  height: 35px;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 10px;
 }
 
 input {
   text-align: center;
+}
+
+#profileTable, #picTable, #changeTable {
+  font-size: 1em;
+  margin-top: 15px;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 350px;
+  background-color: #F6EDBC;
+  border: 2px solid #815c54;
+  padding: 5px 5px;
+  vertical-align: middle;
+  border-radius: 10px;
+}
+
+#picTable,  #changeTable {
+  border-collapse: separate;
+  border-radius: 10px;
+}
+
+
+#profileTable td {
+  border: 2px solid #815c54;
+  padding: 5px 5px;
+  vertical-align: middle;
+  text-align: left;
+  border-left: none;
+}
+
+#profileTable th {
+  border: 2px solid #815c54;
+  padding: 5px 5px;
+  vertical-align: middle;
+  text-align: right;
+  border-right: none;
+}
+
+#profileTable tr:nth-child(even) {
+  background: #E6FBFF;
+}
+
+#uploadButton, #changeButton {
+  background-color: #4CAF50;
+  color: #FFF;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  width: 200px;
+  height: 35px;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+#adminButton {
+  background-color: #4287f5;
+  color: #FFF;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  width: 200px;
+  height: 35px;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+/*
+@media screen and (max-width: 900px) {
+  #programTable td {
+    padding: 2px 2px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #programTable>* {
+    font-size: 0.75em;
+  }
+
+  #programTable td {
+    padding: 2px 2px;
+    line-height: 0.9;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #programTable td {
+    padding: 0px 0px;
+    letter-spacing: -1px;
+    line-height: 0.9;
+  }
 }
