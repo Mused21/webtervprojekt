@@ -106,6 +106,26 @@
     saveUsers($users);
   }
 
+  function hideUserEmail($userToActOn) {
+    $users = loadUsers("users.txt");
+    foreach ($users as &$user) {
+      if ($user['email'] === $userToActOn['email']) {
+        $user['hidden'] = TRUE;
+      }
+    }
+    saveUsers($users);
+  }
+
+  function revealUserEmail($userToActOn) {
+    $users = loadUsers("users.txt");
+    foreach ($users as &$user) {
+      if ($user['email'] === $userToActOn['email']) {
+        $user['hidden'] = FALSE;
+      }
+    }
+    saveUsers($users);
+  }
+
   function isFilled($field) {
     if (!isset($_POST[$field]) || trim($_POST[$field]) === "") {
       return false;

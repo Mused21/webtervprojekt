@@ -25,6 +25,7 @@ table {
 
 input {
   text-align: center;
+  vertical-align: middle;
 }
 
 #profileTable, #picTable, #changeTable {
@@ -89,6 +90,11 @@ input {
   cursor: pointer;
   margin-top: 20px;
   border-radius: 10px;
+}
+
+#hide {
+  width: 30px;
+  height: 30px;
 }
 
 /*

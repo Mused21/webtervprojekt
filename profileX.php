@@ -10,7 +10,7 @@
   if (findEmailByName($who) === Null)   echo (header("Location: profileNull.php?who= ". $who));
 
 
-  $profile_pic = "profile_pics/default.svg";
+  $profile_pic = "profile_pics/default.png";
   $path = "profile_pics/" . findEmailByName($who);
   $extensions = ["png", "jpg", "jpeg"];
   foreach ($extensions as $extension) {
@@ -43,24 +43,24 @@
         </th>
       </tr>
     </table>
-
+      <?php $user = findUserByName($who); ?>
       <table id="profileTable">
         <tr>
           <th>Title:</th>
-          <td><?php echo findUserByName($who)['title']; ?></td>
+          <td><?php echo $user['title']; ?></td>
         </tr>
         <tr>
           <th>Name:</th>
-          <td><?php echo findUserByName($who)['name']; ?></td>
+          <td><?php echo $user['name']; ?></td>
         </tr>
 
         <tr>
           <th>E-mail:</th>
-          <td><?php echo findUserByName($who)['email']; ?></td>
+          <td><?php echo $user['hidden'] ? $_SESSION['user']['admin'] ? $user['email'] : 'hidden' : $user['email']; ?></td>
         </tr>
         <tr>
           <th>Speaker:</th>
-          <td><?php echo findUserByName($who)['choice'] === "speaker" ? "Yes" : "No"; ?></td>
+          <td><?php echo $user['choice'] === "speaker" ? "Yes" : "No"; ?></td>
         </tr>
       </table>
     <br />

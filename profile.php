@@ -6,6 +6,16 @@
   	header("Location: login.php");
   }
 
+  if (isset($_POST["reveal"])) {
+    revealUserEmail($_SESSION["user"]);
+    echo "<meta http-equiv='refresh' content='0'>";
+  }
+
+  if (isset($_POST["hide"])) {
+    hideUserEmail($_SESSION["user"]);
+    echo "<meta http-equiv='refresh' content='0'>";
+  }
+
   $profile_pic = "profile_pics/default.png";
   $path = "profile_pics/" . $_SESSION["user"]["email"];
   $extensions = ["png", "jpg", "jpeg"];
@@ -149,7 +159,14 @@
 
         <tr>
           <th>E-mail:</th>
-          <td><input type="text" name="newEmail" value="<?php echo $_SESSION["user"]['email']; ?>" placeholder="<?php echo $_SESSION["user"]['email']; ?>"/></td>
+          <td><input type="text" name="newEmail" value="<?php echo $_SESSION["user"]['email']; ?>" placeholder="<?php echo $_SESSION["user"]['email']; ?>"/>
+            <?php if(findUserByName($_SESSION["user"]['name'])['hidden']) {
+              echo "<form action='' method='POST'><input id='hide' type='image' title='Reveal e-mail' src='media/hide.png'/><input type='hidden' name='reveal'/></form>";
+            } else {
+              echo "<form action='' method='POST'><input id='hide' type='image' title='Hide e-mail' src='media/reveal.jpg'/><input type='hidden' name='hide'/></form>";
+            }
+            ?>
+          </td>
         </tr>
 
         <tr>
