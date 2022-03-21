@@ -1,33 +1,22 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang='en'>
 
 <head>
   <link rel="stylesheet" type="text/css" media="all" href="css/main.css" />
   <link rel="stylesheet" type="text/css" media="all" href="css/pictures.css" />
-  <title>Conference</title>
-  <link rel="icon" href="media/icon.png" />
-  <meta name="author" content="Imre Norbert, Bengery Zsolt" />
-  <meta name="description" content="Ig Nobel Conference 2022 Official Website" />
-  <meta name="keywords" content="SZTE, Webtervezés" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <?php include_once "head.html"; ?>
 </head>
 
 <body>
-  <div id="banner">
-    <img id="banner-img" src="media/banner.png" alt="Banner - Univ. of Szeged">
-    <div id="date">
-      April 1, 2022
-    </div>
-  </div>
-  <nav>
-    <a title="Conference Home Page" href="index.html">Home</a>
-    <a title="Register for the Conference" href="registration.html">Registration</a>
-    <a class="current" title="Pictures" href="pictures.html">Pictures</a>
-    <a title="Conference Program" href="program.html">Program</a>
-    <a title="Venue of the Conference" href="venue.html">Venue</a>
-    <a title="Conference Contact" href="contact.html">Contact</a>
-  </nav>
+  <?php include_once "banner.html"; ?>
+  <?php
+    $page='pictures.php';
+    include_once "nav.php";
+  ?>
 
   <div class="content">
     <h1>Nostalgia session</h1>
@@ -43,9 +32,7 @@
       <a href="media/james-hetfield.jpg"><img class="item" src="media/james-hetfield_lq.jpg" alt="Ig Nobel Archive Photo"></a>
       <a href="media/stockphoto9.jpg"><img class="item" src="media/stockphoto9_lq.jpg" alt="Ig Nobel Archive Photo"></a>
     </div>
-    <footer>
-      &copy; Conference Organizers: Bengery Zsolt, Imre Norbert
-    </footer>
+  <?php include_once "footer.html"; ?>
   </div>
 
 </body>

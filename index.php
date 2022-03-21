@@ -1,33 +1,25 @@
+<?php
+  session_start();
+
+  if (!isset($_COOKIE["language"])) {
+    setcookie("language", "en", time() + 604800);
+  }
+?>
+
 <!DOCTYPE html>
 <html lang='en'>
 
 <head>
   <link rel="stylesheet" type="text/css" media="all" href="css/main.css" />
-  <title>Conference</title>
-  <link rel="icon" href="media/icon.png" />
-  <meta name="author" content="Imre Norbert, Bengery Zsolt" />
-  <meta name="description" content="Ig Nobel Conference 2022 Official Website" />
-  <meta name="keywords" content="SZTE, Webtervezés" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <?php include_once "head.html"; ?>
 </head>
 
 <body>
-  <div id="banner">
-    <img id="banner-img" src="media/banner.png" alt="Banner - Univ. of Szeged">
-    <div id="date">
-      April 1, 2022
-    </div>
-  </div>
-  <nav>
-    <a class="current" title="Conference Home Page" href="index.html">Home</a>
-    <a title="Register for the Conference" href="registration.html">Registration</a>
-    <a title="Pictures" href="pictures.html">Pictures</a>
-    <a title="Conference Program" href="program.html">Program</a>
-    <a title="Venue of the Conference" href="venue.html">Venue</a>
-    <a title="Conference Contact" href="contact.html">Contact</a>
-  </nav>
-
+  <?php include_once "banner.html"; ?>
+  <?php
+    $page='index.php';
+    include_once "nav.php";
+  ?>
   <div class="content">
     <section>
       <h1>Welcome!</h1>
@@ -63,9 +55,7 @@
       <blockquote>"If you didn't win a prize—and especially if you did—better luck next year!"</blockquote>
     </section>
 
-    <footer>
-      &copy; Conference Organizers: Bengery Zsolt, Imre Norbert
-    </footer>
+    <?php include_once "footer.html"; ?>
   </div>
 </body>
 

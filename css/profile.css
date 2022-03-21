@@ -1,0 +1,19 @@
+#profilepic {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+table {
+  margin: auto;
+}
+
+#deleteProfile {
+  color: red;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+input {
+  text-align: center;
+}
