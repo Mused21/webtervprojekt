@@ -185,29 +185,6 @@
     </div>
   </div>
   <?php include_once "footer.php"; ?>
-  <!--
-  <script>
-    const isSpeaker = document.querySelector('#choice_speaker');
-    const isParticipant = document.querySelector('#choice_participant');
-    const resetButton = document.querySelector('#resetbutton');
-
-    isSpeaker.addEventListener('change', speakerCheck);
-    isParticipant.addEventListener('change', speakerCheck);
-    resetButton.addEventListener('click', hide);
-
-    function speakerCheck() {
-      if (document.getElementById("choice_speaker").checked) {
-        document.getElementById("speaker").style.display = "block";
-      } else {
-        document.getElementById("speaker").style.display = "none";
-      }
-    }
-
-    function hide() {
-      document.getElementById("speaker").style.display = "none";
-    }
-  </script>
--->
 </body>
 
 </html>

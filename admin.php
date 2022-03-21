@@ -50,7 +50,7 @@
     echo "<tr><thead><tr><th>Picture</th><th>Title</th><th>Name</th><th>E-mail</th><th>Speaker</th><th>Newsletter</th><th>Level</th><th>Block</th><th>Delete</th></tr></thead>";
     foreach ($users as $user) {
       $path = "profile_pics/" . $user["email"];
-      $profile_pic = "profile_pics/default.svg";
+      $profile_pic = "profile_pics/default.png";
       foreach ($extensions as $extension) {
         if (file_exists($path . "." . $extension)) {
           $profile_pic = $path . "." . $extension;

@@ -6,7 +6,7 @@
   	header("Location: login.php");
   }
 
-  $profile_pic = "profile_pics/default.svg";
+  $profile_pic = "profile_pics/default.png";
   $path = "profile_pics/" . $_SESSION["user"]["email"];
   $extensions = ["png", "jpg", "jpeg"];
 

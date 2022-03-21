@@ -8,8 +8,6 @@
       $errors = [];
       $name = $_SESSION["user"]["name"];
       $email = $_SESSION["user"]["email"];
-      echo '<div class="error">' . $_SESSION["user"]["name"] . "<br> ". $_SESSION["user"]["email"] . "</div>" ;
-      echo "<br>";
 
       if (!isset($_POST["text"]) || trim($_POST["text"]) === "") {
         $errors[] = "Error: No character detected";
@@ -21,12 +19,10 @@
       $time->setTimezone(new DateTimeZone("Europe/Budapest"));
       $comment = trim($_POST["text"]);
       if (count($errors) === 0) {
-        echo "new comment ok: " . $comment . "  ". $email . "  ".  $name ;
         $newComment[] = ["email" => $email, "name" => $name, "time" => $time, "comment" => $comment];
         $comments[] = $newComment;
         saveComments($comments);
       }
-        //header("Location: forum.php"); }
       else foreach ($errors as $i) {
           echo '<div class="error">' . $i . $_POST["text"] . "</div>" ;
         }
@@ -54,7 +50,7 @@
       <?php foreach ($comments as &$comment) { ?>
         <div id="commentBox" class="commentBox">
           <img src="<?php
-                $profile_pic = "profile_pics/default.svg";
+                $profile_pic = "profile_pics/default.png";
                 $path = "profile_pics/" . $comment[0]["email"];
                 $extensions = ["png", "jpg", "jpeg"];
                 foreach ($extensions as $extension) {
