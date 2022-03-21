@@ -28,6 +28,10 @@ input {
   vertical-align: middle;
 }
 
+.hidden {
+  display: none;
+}
+
 #profileTable, #picTable, #changeTable {
   font-size: 1em;
   margin-top: 15px;

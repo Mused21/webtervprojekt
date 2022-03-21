@@ -139,7 +139,8 @@
       <tr>
         <th colspan="2">
           <form action="profile.php" method="POST" enctype="multipart/form-data">
-            <input type="file" name="pic" accept="image/*"/>
+            <input type="file" id="picture" class="hidden" name="pic" accept="image/*"/>
+            <label for="picture">Click to select picture</label>
             <input type="submit" name="upload-btn" value="Upload a picture" id="uploadButton"/>
           </form>
         </th>
