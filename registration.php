@@ -112,7 +112,7 @@
               <td>
                 <select name="Title">
                   <option selected disabled>Title</option>
-                  <option value="Mr." <?php if (isset($_POST['Title']) && $_POST['Title'] === 'Mr.') echo 'selected'; ?>/>Mr.</option>
+                  <option value="Mr." <?php if (isset($_POST['Title']) && $_POST['Title'] === 'Mr.') echo 'selected'; ?>>Mr.</option>
                   <option value="Ms." <?php if (isset($_POST['Title']) && $_POST['Title'] === 'Ms.') echo 'selected'; ?>>Ms.</option>
                   <option value="Dr." <?php if (isset($_POST['Title']) && $_POST['Title'] === 'Dr.') echo 'selected'; ?>>Dr.</option>
                   <option value="Prof." <?php if (isset($_POST['Title']) && $_POST['Title'] === 'Prof.') echo 'selected'; ?>>Prof</option>
@@ -135,12 +135,12 @@
             </tr>
             <tr>
               <td>
-                <input type="password" name="pw" id="pwid" value="" placeholder="Password"/>
+                <input type="password" name="pw" id="pwid" placeholder="Password"/>
               </td>
             </tr>
             <tr>
               <td>
-                <input type="password" name="pw2" id="pwid" value="" placeholder="Password again"/>
+                <input type="password" name="pw2" id="pwid2" placeholder="Password again"/>
               </td>
             </tr>
           </table>
@@ -168,7 +168,7 @@
             <input type="submit" name="Register" value="Submit" id="submitbutton" />
             <br />
       </form>
-      <form action="resetform.php" method="link">
+      <form action="resetform.php">
             <input type="submit" name="Reset" value="Reset" id="resetbutton" />
       </form>
       <?php

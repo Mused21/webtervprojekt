@@ -52,7 +52,7 @@
     <p class="content">
     </p>
     <div id="form2">
-      <form action="" method="POST" enctype="application/x-www-form-urlencoded" autocomplete="on">
+      <form action="#" method="POST" enctype="application/x-www-form-urlencoded" autocomplete="on">
         <fieldset>
           <legend>Login</legend>
           <table>
@@ -82,6 +82,5 @@
     </div>
   </div>
   <?php include_once "footer.php"; ?>
-  </div>
 </body>
 </html>

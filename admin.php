@@ -47,7 +47,7 @@
     <table>
     <?php
     $extensions = ["png", "jpg", "jpeg"];
-    echo "<tr><thead><tr><th>Picture</th><th>Title</th><th>Name</th><th>E-mail</th><th>Speaker</th><th>Newsletter</th><th>Level</th><th>Block</th><th>Delete</th></tr></thead>";
+    echo "<thead><tr><th>Picture</th><th>Title</th><th>Name</th><th>E-mail</th><th>Speaker</th><th>Newsletter</th><th>Level</th><th>Block</th><th>Delete</th></tr></thead>";
     foreach ($users as $user) {
       $path = "profile_pics/" . $user["email"];
       $profile_pic = "profile_pics/default.png";
@@ -58,7 +58,7 @@
       }
       echo
       "<tr><td>"
-      . "<img class='profilepic' src='" . $profile_pic . "'/>"
+      . "<img class='profilepic' alt='profilepic' src='" . $profile_pic . "'/>"
       . "</td><td>"
       . $user['title']
       . "</td><td>"
@@ -77,14 +77,14 @@
       .
       "<input type='hidden' name='unblock' value='" . $user['email'] . "'/>"
       .
-      "<input class='greencheck' type='image' src='media/greencheckmark.png' />"
+      "<input class='greencheck' type='image' alt='check' src='media/greencheckmark.png' />"
       .
       "</form>" :
       "<form action='admin.php' method='POST'>"
       .
       "<input type='hidden' name='block' value='" . $user['email'] . "'/>"
       .
-      "<input class='redcross' type='image' src='media/redcross.png' />"
+      "<input class='redcross' type='image' alt='cross' src='media/redcross.png' />"
       .
       "</form>"
       ))
@@ -94,13 +94,13 @@
       .
       "<input type='hidden' name='deleteUser' value='" . $user['email'] . "'/>"
       .
-      "<input class='redcross' type='image' src='media/redcross.png' /> </form>")
+      "<input class='redcross' type='image' alt='cross' src='media/redcross.png' /> </form>")
       . "</td> </tr>";
     }
 
     ?>
     </table>
-
+</div>
   <?php include_once "footer.php"; ?>
 </body>
 </html>

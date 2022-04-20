@@ -20,8 +20,8 @@
     include_once "nav.php";
   ?>
   <div class="content">
-    <h2><?php echo ($who. ": ") ?>Deleted profile</h2>
-
+    <h2><?php echo ($who. ": ") ?>Unknown profile</h2>
+  </div>
   <?php include_once "footer.php"; ?>
 </body>
 </html>

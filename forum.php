@@ -48,7 +48,7 @@
       <p>No comments... Silence is sometimes the best answer...</p>
     <?php } else { ?>
       <?php foreach ($comments as &$comment) { ?>
-        <div id="commentBox" class="commentBox">
+        <div class="commentBox">
           <img src="<?php
                 $profile_pic = "profile_pics/default.png";
                 $path = "profile_pics/" . $comment[0]["email"];
@@ -58,14 +58,12 @@
                     $profile_pic = $path . "." . $extension;
                   }
                 }
-                 echo $profile_pic; ?>
-                 " alt="profilepic" class="profile" id="profilePic"/>
+                echo $profile_pic; ?>" alt="profilepic" class="profilePic"/>
 
-          <div id="time"><?php echo ($comment[0]["time"]->format('Y-m-d H:i:s')); ?></div>
-
-          <a href="profileX.php?who=<?php echo $comment[0]["name"]?>"><div id="name"><b> <?php echo $comment[0]["name"]; ?></b></div></a>
-
-          <div id="commentText"><?php echo ($comment[0]["comment"]); ?></div>
+          <div class="time"><?php echo ($comment[0]["time"]->format('Y-m-d H:i:s')); ?></div>
+          <?php $replacedName = str_replace(' ', '%20', $comment[0]["name"]);?>
+          <a href="profileX.php?who=<?php echo $replacedName?>"><div class="name"><b> <?php echo $comment[0]["name"]; ?></b></div></a>
+          <div class="commentText"><?php echo ($comment[0]["comment"]); ?></div>
         </div>
       <?php } ?>
     <?php } ?>
@@ -77,10 +75,11 @@
         <form class="commentForm" action="forum.php" method="POST">
           <textarea name="text" rows="8" cols="60" maxlength="400" required=""></textarea>
           <br/>
-          <input type="submit" name="send-comment" value="Send-comment" id="commentButton"/>
+          <input type="submit" name="send-comment" value="Send comment" id="commentButton"/>
         </form>
       </div>
     <?php } ?>
+  </div>
   <?php include_once "footer.php"; ?>
 </body>
 </html>

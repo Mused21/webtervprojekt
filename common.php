@@ -56,6 +56,19 @@
     }
   }
 
+  function deleteUserWithoutProfilePic($user) {
+    $toRemove = serialize($user);
+    $lines = file("users.txt", FILE_IGNORE_NEW_LINES);
+    foreach($lines as $key => $line) {
+        if($line === $toRemove) {
+          unset($lines[$key]);
+        }
+    }
+    $data = implode(PHP_EOL, $lines);
+    file_put_contents("users.txt", $data);
+  }
+
+
   function findUserByEmail($email) {
     $users = loadUsers("users.txt");
     foreach ($users as $user) {

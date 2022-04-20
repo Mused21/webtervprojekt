@@ -7,7 +7,9 @@
   }
   $who = $_GET['who'];
 
-  if (findEmailByName($who) === Null)   echo (header("Location: profileNull.php?who= ". $who));
+  if (findEmailByName($who) === Null) {
+    header("Location: profileNull.php?who= ". $who);
+  }
 
 
   $profile_pic = "profile_pics/default.png";
@@ -38,7 +40,7 @@
     <br />
     <table id=picTable>
       <tr>
-        <th colspan="2">
+        <th>
           <img id="profilepic" src="<?php echo $profile_pic; ?>" alt="Profile picture"/>
         </th>
       </tr>
@@ -64,7 +66,7 @@
         </tr>
       </table>
     <br />
-
+</div>
   <?php include_once "footer.php"; ?>
 </body>
 </html>
