@@ -56,6 +56,19 @@
     }
   }
 
+  function deleteUserWithoutProfilePic($user) {
+    $toRemove = serialize($user);
+    $lines = file("users.txt", FILE_IGNORE_NEW_LINES);
+    foreach($lines as $key => $line) {
+        if($line === $toRemove) {
+          unset($lines[$key]);
+        }
+    }
+    $data = implode(PHP_EOL, $lines);
+    file_put_contents("users.txt", $data);
+  }
+
+
   function findUserByEmail($email) {
     $users = loadUsers("users.txt");
     foreach ($users as $user) {
@@ -65,6 +78,26 @@
     }
     return NULL;
   }
+
+  function findEmailbyName($name) {
+    $users = loadUsers("users.txt");
+    foreach ($users as $user) {
+      if ($user['name'] === $name) {
+        return $user["email"];
+      }
+    }
+    return NULL;
+  }
+  function findUserByName($name) {
+    $users = loadUsers("users.txt");
+    foreach ($users as $user) {
+      if ($user['name'] === $name) {
+        return $user;
+      }
+    }
+    return NULL;
+  }
+
 
   function blockUser($toBlock) {
     $users = loadUsers("users.txt");
@@ -81,6 +114,26 @@
     foreach ($users as &$user) {
       if ($user['email'] === $toUnblock['email']) {
         $user['block'] = FALSE;
+      }
+    }
+    saveUsers($users);
+  }
+
+  function hideUserEmail($userToActOn) {
+    $users = loadUsers("users.txt");
+    foreach ($users as &$user) {
+      if ($user['email'] === $userToActOn['email']) {
+        $user['hidden'] = TRUE;
+      }
+    }
+    saveUsers($users);
+  }
+
+  function revealUserEmail($userToActOn) {
+    $users = loadUsers("users.txt");
+    foreach ($users as &$user) {
+      if ($user['email'] === $userToActOn['email']) {
+        $user['hidden'] = FALSE;
       }
     }
     saveUsers($users);
@@ -123,4 +176,37 @@
       }
     }
   }
+  function loadComments() {
+    $comments = [];
+    $file = fopen("comments.txt", "r");
+
+    if ($file === FALSE) {
+      die("ERROR: File could not be opened");
+    }
+
+    while (($line = fgets($file)) !== FALSE) {
+      $comment = unserialize($line);
+      $comments[] = $comment;
+    }
+
+    fclose($file);
+    return $comments;
+  }
+
+  function saveComments($comments) {
+    $file = fopen("comments.txt", "w");
+
+    if ($file === FALSE) {
+      die("ERROR: File could not be opened");
+    }
+
+    foreach($comments as $comment) {
+      $serialized_comment = serialize($comment);
+      fwrite($file, $serialized_comment . "\n");
+    }
+
+    fclose($file);
+  }
+
+
 ?>

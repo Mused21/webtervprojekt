@@ -33,7 +33,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang='en'>
+<html lang= <?php echo($_COOKIE["language"]);?>>
 
 <head>
   <link rel="stylesheet" type="text/css" media="all" href="css/main.css" />
@@ -52,7 +52,7 @@
     <p class="content">
     </p>
     <div id="form2">
-      <form action="" method="POST" enctype="application/x-www-form-urlencoded" autocomplete="on">
+      <form action="#" method="POST" enctype="application/x-www-form-urlencoded" autocomplete="on">
         <fieldset>
           <legend>Login</legend>
           <table>
@@ -71,7 +71,7 @@
             </tr>
             <tr>
               <td>
-                <input type="submit" name="Login" value="Login" />
+                <input type="submit" name="Login" value="Login" id="loginButton"/>
               </td>
             </tr>
 
@@ -81,7 +81,6 @@
       <?php echo '<div class="error">' . $msg . "</div>";?>
     </div>
   </div>
-  <?php include_once "footer.html"; ?>
-  </div>
+  <?php include_once "footer.php"; ?>
 </body>
 </html>

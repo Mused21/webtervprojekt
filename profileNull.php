@@ -1,34 +1,27 @@
 <?php
   session_start();
+  include "common.php";
 
-  if (!isset($_COOKIE["language"])) {
-    setcookie("language", "en", time() + 604800);
-  }
+  $who = $_GET['who'];
+  if ($who === NULL)   header("Location: profileNull.php");
 ?>
 
 <!DOCTYPE html>
 <html lang= <?php echo($_COOKIE["language"]);?>>
-
 <head>
   <link rel="stylesheet" type="text/css" media="all" href="css/main.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="css/profile.css" />
   <?php include_once "head.html"; ?>
 </head>
-
 <body>
   <?php include_once "banner.html"; ?>
   <?php
-    $page='index.php';
-
+    $page='profile.php';
     include_once "nav.php";
   ?>
-
   <div class="content">
-    <?php
-      include "language/" . $_COOKIE["language"] . "/indexContent.php";
-     ?>
-
-    <?php include_once "footer.php"; ?>
+    <h2><?php echo ($who. ": ") ?>Unknown profile</h2>
   </div>
+  <?php include_once "footer.php"; ?>
 </body>
-
 </html>

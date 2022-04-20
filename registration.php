@@ -61,9 +61,16 @@
       }
     }
 
+    foreach ($users as $user) {
+      if (strtolower($user["name"]) === strtolower($name)) {
+        $error[] = "The name is already registered.";
+      }
+    }
+
+
     if (count($error) === 0) {
       $pw = password_hash($pw, PASSWORD_DEFAULT);
-      $users[] = ["email" => $email, "pw" => $pw, "name" => $name, "title" => $title, "choice" => $choice, "news" => $news, "admin" => FALSE, "block" => FALSE];
+      $users[] = ["email" => $email, "pw" => $pw, "name" => $name, "title" => $title, "choice" => $choice, "news" => $news, "admin" => FALSE, "block" => FALSE, "hidden" => FALSE];
       saveUsers($users);
       $success = TRUE;
       header("Location: login.php");
@@ -73,7 +80,7 @@
   }
   ?>
 <!DOCTYPE html>
-<html lang='en'>
+<html lang= <?php echo($_COOKIE["language"]);?>>
 
 <head>
   <link rel="stylesheet" type="text/css" media="all" href="css/main.css" />
@@ -89,8 +96,12 @@
   ?>
 
   <div class="content">
-    <p class="content">Registration is a <b>necessity</b> if you would like to participate in the conference.<br />
-      Please fill out the form below. Your password must be at least 8 characters.<br />
+    <p class="content">
+      <?php if ($_COOKIE["language"]==="en")
+        echo "Registration is a <b>necessity</b> if you would like to participate in the conference.<br />
+      Please fill out the form below. Your password must be at least 8 characters.<br />";
+            if ($_COOKIE["language"]==="es") echo "La inscripción es una <b>necesidad</b> si desea participar en la conferencia.<br />
+       Por favor, rellene el siguiente formulario. Su contraseña debe tener al menos 8 caracteres.<br />"; ?>
     </p>
     <div id="form">
       <fieldset>
@@ -101,7 +112,7 @@
               <td>
                 <select name="Title">
                   <option selected disabled>Title</option>
-                  <option value="Mr." <?php if (isset($_POST['Title']) && $_POST['Title'] === 'Mr.') echo 'selected'; ?>/>Mr.</option>
+                  <option value="Mr." <?php if (isset($_POST['Title']) && $_POST['Title'] === 'Mr.') echo 'selected'; ?>>Mr.</option>
                   <option value="Ms." <?php if (isset($_POST['Title']) && $_POST['Title'] === 'Ms.') echo 'selected'; ?>>Ms.</option>
                   <option value="Dr." <?php if (isset($_POST['Title']) && $_POST['Title'] === 'Dr.') echo 'selected'; ?>>Dr.</option>
                   <option value="Prof." <?php if (isset($_POST['Title']) && $_POST['Title'] === 'Prof.') echo 'selected'; ?>>Prof</option>
@@ -124,12 +135,12 @@
             </tr>
             <tr>
               <td>
-                <input type="password" name="pw" id="pwid" value="" placeholder="Password"/>
+                <input type="password" name="pw" id="pwid" placeholder="Password"/>
               </td>
             </tr>
             <tr>
               <td>
-                <input type="password" name="pw2" id="pwid" value="" placeholder="Password again"/>
+                <input type="password" name="pw2" id="pwid2" placeholder="Password again"/>
               </td>
             </tr>
           </table>
@@ -157,7 +168,7 @@
             <input type="submit" name="Register" value="Submit" id="submitbutton" />
             <br />
       </form>
-      <form action="resetform.php" method="link">
+      <form action="resetform.php">
             <input type="submit" name="Reset" value="Reset" id="resetbutton" />
       </form>
       <?php
@@ -173,30 +184,7 @@
 
     </div>
   </div>
-  <?php include_once "footer.html"; ?>
-  <!--
-  <script>
-    const isSpeaker = document.querySelector('#choice_speaker');
-    const isParticipant = document.querySelector('#choice_participant');
-    const resetButton = document.querySelector('#resetbutton');
-
-    isSpeaker.addEventListener('change', speakerCheck);
-    isParticipant.addEventListener('change', speakerCheck);
-    resetButton.addEventListener('click', hide);
-
-    function speakerCheck() {
-      if (document.getElementById("choice_speaker").checked) {
-        document.getElementById("speaker").style.display = "block";
-      } else {
-        document.getElementById("speaker").style.display = "none";
-      }
-    }
-
-    function hide() {
-      document.getElementById("speaker").style.display = "none";
-    }
-  </script>
--->
+  <?php include_once "footer.php"; ?>
 </body>
 
 </html>
